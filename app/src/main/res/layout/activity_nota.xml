@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#80D8F8F4"
-    android:backgroundTint="#B4A6E6DF"
+    android:background="#F0F8FF"
+    android:backgroundTint="#F0F8FF"
     tools:context=".NotaActivity">
 
     <!--  Título -->
@@ -44,8 +44,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:contentDescription="Buscar"
-            android:src="@android:drawable/ic_menu_search"
-            />
+            android:src="@android:drawable/ic_menu_search" />
 
         <!-- EditTexT -->
         <EditText

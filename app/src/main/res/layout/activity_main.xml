@@ -9,7 +9,7 @@
     android:background="#F4F7FA" tools:context=".MainActivity">
 
     <View
-        android:id="@+id/header_background"
+        android:id="@+id/Ccontenedor"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:background="#12065A"
@@ -47,30 +47,34 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
+            android:id="@+id/btn "
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
+            android:orientation="horizontal"
             android:padding="24dp">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:srcCompat="@drawable/gt"
-                app:tint="#FF8F00" /> <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="16dp">
+                app:tint="#FF8F00" />
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Añadir Contacto"
-                android:textColor="#333333"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:layout_marginStart="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Añadir Contacto"
+                    android:textColor="#333333"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -158,4 +162,4 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+z</androidx.constraintlayout.widget.ConstraintLayout>

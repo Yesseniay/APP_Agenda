@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9CB8D6D2"
-    tools:context=".ActivitynoescrActivity">
+    android:background="#F0F8FF"
+    tools:context=".NotaescribirActivity">
 
     <!-- ✏Título principal -->
     <TextView
