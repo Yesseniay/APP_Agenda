@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         //  Abre el activity de notas
         card_notas.setOnClickListener(v -> {
             Toast.makeText(this, "Notas", Toast.LENGTH_SHORT).show();
