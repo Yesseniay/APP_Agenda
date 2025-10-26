@@ -47,7 +47,6 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
-            android:id="@+id/btn "
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -162,4 +161,4 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-z</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
