@@ -30,13 +30,13 @@ public class AgendaManager {
     // CRUD CONTACTOS
 
     // Metodo para agregar contactos
-    public long agregarContacto(String nombre, String numero, String email) {
+    public long agregarContacto(String nombre, String numero, String email, String notas) {
         SQLiteDatabase db = getWritableDB();
         ContentValues values = new ContentValues();
         values.put(ContactoEntry.COLUMN_NAME, nombre);
         values.put(ContactoEntry.COLUMN_NUMERO, numero);
         values.put(ContactoEntry.COLUMN_EMAIL, email);
-        values.put(ContactoEntry.COLUMN_NOTAS, "");
+        values.put(ContactoEntry.COLUMN_NOTAS, notas);
         long newRowId = db.insert(ContactoEntry.TABLE_NAME, null, values);
         db.close();
         return newRowId;
@@ -60,13 +60,13 @@ public class AgendaManager {
     }
 
     //Metodo para actualizar los contactos
-    public int actualizarContacto(long id, String nombre, String numero, String email) {
+    public int actualizarContacto(long id, String nombre, String numero, String email, String notas) {
         SQLiteDatabase db = getWritableDB();
         ContentValues values = new ContentValues();
         values.put(ContactoEntry.COLUMN_NAME, nombre);
         values.put(ContactoEntry.COLUMN_NUMERO, numero);
         values.put(ContactoEntry.COLUMN_EMAIL, email);
-        values.put(ContactoEntry.COLUMN_NOTAS, "");
+        values.put(ContactoEntry.COLUMN_NOTAS, notas);
 
         String selection = ContactoEntry.COLUMN_ID + " = ?";
         String[] selectionArgs = { String.valueOf(id) };
