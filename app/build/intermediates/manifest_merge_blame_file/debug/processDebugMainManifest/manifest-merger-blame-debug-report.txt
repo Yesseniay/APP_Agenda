@@ -20,79 +20,79 @@
 15-->[androidx.core:core:1.13.0] C:\Users\yesse\.gradle\caches\8.13\transforms\25d2a57d872a7f1da640ce950a40d91b\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
 16
 17    <application
-17-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:5:5-45:19
+17-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:5:5-45:19
 18        android:allowBackup="true"
-18-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:6:9-35
+18-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:6:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 19-->[androidx.core:core:1.13.0] C:\Users\yesse\.gradle\caches\8.13\transforms\25d2a57d872a7f1da640ce950a40d91b\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
 20        android:dataExtractionRules="@xml/data_extraction_rules"
-20-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:7:9-65
+20-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:7:9-65
 21        android:debuggable="true"
 22        android:extractNativeLibs="false"
 23        android:fullBackupContent="@xml/backup_rules"
-23-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:8:9-54
+23-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:8:9-54
 24        android:icon="@mipmap/ic_launcher"
-24-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:9:9-43
+24-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:9:9-43
 25        android:label="@string/app_name"
-25-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:10:9-41
+25-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:10:9-41
 26        android:roundIcon="@mipmap/ic_launcher_round"
-26-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:11:9-54
+26-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:11:9-54
 27        android:supportsRtl="true"
-27-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:12:9-35
+27-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:12:9-35
 28        android:testOnly="true"
 29        android:theme="@style/Theme.MiAgenda" >
-29-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:13:9-46
+29-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:13:9-46
 30        <activity
-30-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:14:9-16:40
+30-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:14:9-16:40
 31            android:name="com.example.miagenda.ItemNotaActivity"
-31-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:15:13-45
+31-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:15:13-45
 32            android:exported="false" />
-32-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:16:13-37
+32-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:16:13-37
 33        <activity
-33-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:17:9-19:40
+33-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:17:9-19:40
 34            android:name="com.example.miagenda.ItemContactoActivity"
-34-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:18:13-49
+34-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:18:13-49
 35            android:exported="false" />
-35-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:19:13-37
+35-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:19:13-37
 36        <activity
-36-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:20:9-22:40
+36-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:20:9-22:40
 37            android:name="com.example.miagenda.NotaescribirActivity"
-37-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:21:13-49
+37-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:21:13-49
 38            android:exported="false" />
-38-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:22:13-37
+38-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:22:13-37
 39        <activity
-39-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:23:9-25:40
+39-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:23:9-25:40
 40            android:name="com.example.miagenda.ContactoActivity"
-40-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:24:13-45
+40-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:24:13-45
 41            android:exported="false" />
-41-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:25:13-37
+41-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:25:13-37
 42        <activity
-42-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:26:9-28:40
+42-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:26:9-28:40
 43            android:name="com.example.miagenda.AgregarContactoActivity"
-43-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:27:13-52
+43-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:27:13-52
 44            android:exported="false" />
-44-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:28:13-37
+44-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:28:13-37
 45        <activity
-45-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:29:9-31:40
+45-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:29:9-31:40
 46            android:name="com.example.miagenda.NotaActivity"
-46-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:30:13-41
+46-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:30:13-41
 47            android:exported="false" />
-47-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:31:13-37
+47-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:31:13-37
 48        <activity
-48-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:33:9-43:20
+48-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:33:9-43:20
 49            android:name="com.example.miagenda.MainActivity"
-49-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:34:13-41
+49-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:34:13-41
 50            android:exported="true" >
-50-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:35:13-36
+50-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:35:13-36
 51            <intent-filter>
-51-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:38:13-41:29
+51-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:38:13-41:29
 52                <action android:name="android.intent.action.MAIN" />
-52-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:39:17-69
-52-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:39:25-66
+52-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:39:17-69
+52-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:39:25-66
 53
 54                <category android:name="android.intent.category.LAUNCHER" />
-54-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:40:17-77
-54-->C:\Users\yesse\OneDrive\Documentos\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:40:27-74
+54-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:40:17-77
+54-->C:\RepositorioFutLatino\APP_Agenda\app\src\main\AndroidManifest.xml:40:27-74
 55            </intent-filter>
 56        </activity>
 57
