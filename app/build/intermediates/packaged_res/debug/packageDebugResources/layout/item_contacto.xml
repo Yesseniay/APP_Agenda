@@ -33,4 +33,31 @@
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
         android:background="#D3D3D3"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btn_editar"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="EDITAR"
+            android:textSize="12sp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#FF9800"/>
+
+        <Button
+            android:id="@+id/btn_eliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="ELIMINAR"
+            android:textSize="12sp"
+            android:backgroundTint="#F44336"/>
+
+    </LinearLayout>
+
 </LinearLayout>

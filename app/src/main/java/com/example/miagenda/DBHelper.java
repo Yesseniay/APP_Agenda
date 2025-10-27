@@ -5,12 +5,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.example.miagenda.AgendaContract.ContactoEntry;
 import com.example.miagenda.AgendaContract.NotaEntry;
-
+//creacion de la base de datos
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "MiAgenda.db";
-
+ //tabla de contactos y notas
     private static final String SQL_CREATE_CONTACTOS =
             "CREATE TABLE " + ContactoEntry.TABLE_NAME + " (" +
                     ContactoEntry.COLUMN_ID + " INTEGER PRIMARY KEY," +

@@ -3772,6 +3772,10 @@ int id bounceEnd 0x7f08006e
 int id bounceStart 0x7f08006f
 int id btnAgregarNota 0x7f080070
 int id btnGuardar 0x7f080071
+int id btn_editar 0x7f080227
+int id btn_editar_nota 0x7f080228
+int id btn_eliminar 0x7f080229
+int id btn_eliminar_nota 0x7f08022a
 int id btn_guardar 0x7f080072
 int id buscador 0x7f080073
 int id buttonPanel 0x7f080074

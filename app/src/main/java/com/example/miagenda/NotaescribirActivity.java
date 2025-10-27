@@ -40,7 +40,7 @@ public class NotaescribirActivity extends AppCompatActivity {
 
         btnGuardar.setOnClickListener(v -> guardarOActualizarNota());
     }
-
+    //cargar 
     private void cargarDatosNota(long id) {
         Cursor cursor = null;
         try {

@@ -12,7 +12,7 @@ import com.example.miagenda.AgendaContract.ContactoEntry;
 
 public class ContactoCursorAdapter extends RecyclerView.Adapter<ContactoCursorAdapter.ContactosViewHolder> {
 
-
+// muestra los datos y busca información rapida para contacto y nota desde la base de dato
     private Cursor mCursor;
     private final OnActionListener listener;
 

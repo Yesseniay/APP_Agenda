@@ -3773,6 +3773,10 @@ id bounceEnd
 id bounceStart
 id btnAgregarNota
 id btnGuardar
+id btn_editar
+id btn_editar_nota
+id btn_eliminar
+id btn_eliminar_nota
 id btn_guardar
 id buscador
 id buttonPanel
