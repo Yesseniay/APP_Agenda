@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.example.miagenda.AgendaContract.ContactoEntry;
 import com.example.miagenda.AgendaContract.NotaEntry;
+import com.example.miagenda.AgendaContract.ActividadEntry;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -24,7 +25,12 @@ public class DBHelper extends SQLiteOpenHelper {
                     NotaEntry.COLUMN_ID + " INTEGER PRIMARY KEY," +
                     NotaEntry.COLUMN_TITULO + " TEXT NOT NULL," +
                     NotaEntry.COLUMN_CONTENIDO + " TEXT)";
-
+    public static final String SQL_CREATE_ACTIVIDAD =
+            "CREATE TABLE " + ActividadEntry.TABLE_NAME + " (" +
+                    ActividadEntry.COLUMN_ID + " INTEGER PRIMARY KEY," +
+                    ActividadEntry.COLUMN_TITULO + " TEXT NOT NULL," +
+                    ActividadEntry.COLUMN_DESCRIPCION + " TEXT," +
+                    ActividadEntry.COLUMN_FECHA + " TEXT NOT NULL)";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -34,12 +40,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_CONTACTOS);
         db.execSQL(SQL_CREATE_NOTAS);
+        db.execSQL(SQL_CREATE_ACTIVIDAD);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + ContactoEntry.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + NotaEntry.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + ActividadEntry.TABLE_NAME);
         onCreate(db);
     }
 }

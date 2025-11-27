@@ -148,4 +148,63 @@ public class AgendaManager {
         db.close();
         return deletedRows;
     }
+
+    //CRUD actividades
+
+    //Metodo para egreagr actividades
+    public long agregarActividad(String titulo, String descripcion, String fecha) {
+        SQLiteDatabase db = getWritableDB();
+        ContentValues values = new ContentValues();
+        values.put(AgendaContract.ActividadEntry.COLUMN_TITULO, titulo);
+        values.put(AgendaContract.ActividadEntry.COLUMN_DESCRIPCION, descripcion);
+        values.put(AgendaContract.ActividadEntry.COLUMN_FECHA, fecha);
+        long newRowId = db.insert(AgendaContract.ActividadEntry.TABLE_NAME, null, values);
+        db.close();
+        return newRowId;
+    }
+
+    // Metodo para buscar actividades por fecha
+    public Cursor buscarActividadesPorFecha(String fecha) {
+        SQLiteDatabase db = getReadableDB();
+        String selection = AgendaContract.ActividadEntry.COLUMN_FECHA + " = ?";
+        String[] selectionArgs = { fecha };
+        String sortOrder = AgendaContract.ActividadEntry.COLUMN_TITULO + " ASC";
+
+        return db.query(AgendaContract.ActividadEntry.TABLE_NAME, null, selection, selectionArgs, null, null, sortOrder);
+    }
+
+    //Metodo para obtener una actividad por ID
+    public Cursor getActividadPorId(long id) {
+        SQLiteDatabase db = getReadableDB();
+        String selection = AgendaContract.ActividadEntry.COLUMN_ID + " = ?";
+        String[] selectionArgs = { String.valueOf(id) };
+
+        return db.query(AgendaContract.ActividadEntry.TABLE_NAME, null, selection, selectionArgs, null, null, null);
+    }
+
+    //Metodo para actualizar actividades
+    public int actualizarActividad(long id, String titulo, String descripcion, String fecha) {
+        SQLiteDatabase db = getWritableDB();
+        ContentValues values = new ContentValues();
+        values.put(AgendaContract.ActividadEntry.COLUMN_TITULO, titulo);
+        values.put(AgendaContract.ActividadEntry.COLUMN_DESCRIPCION, descripcion);
+        values.put(AgendaContract.ActividadEntry.COLUMN_FECHA, fecha);
+
+        String selection = AgendaContract.ActividadEntry.COLUMN_ID + " = ?";
+        String[] selectionArgs = { String.valueOf(id) };
+
+        int count = db.update(AgendaContract.ActividadEntry.TABLE_NAME, values, selection, selectionArgs);
+        db.close();
+        return count;
+    }
+
+    //Metodo para eliminar una actividad
+    public int eliminarActividad(long id) {
+        SQLiteDatabase db = getWritableDB();
+        String selection = AgendaContract.ActividadEntry.COLUMN_ID + " = ?";
+        String[] selectionArgs = { String.valueOf(id) };
+        int deletedRows = db.delete(AgendaContract.ActividadEntry.TABLE_NAME, selection, selectionArgs);
+        db.close();
+        return deletedRows;
+    }
 }

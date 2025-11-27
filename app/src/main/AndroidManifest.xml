@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiAgenda">
         <activity
+            android:name=".activity_actividad_escribir"
+            android:exported="false" />
+        <activity
+            android:name=".item_actividad"
+            android:exported="false" />
+        <activity
+            android:name=".activity_calendario"
+            android:exported="false" />
+        <activity
             android:name=".ItemNotaActivity"
             android:exported="false" />
         <activity
@@ -29,20 +38,15 @@
         <activity
             android:name=".NotaActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
     </application>
 
 </manifest>
-

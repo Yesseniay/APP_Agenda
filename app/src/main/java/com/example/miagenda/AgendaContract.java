@@ -22,4 +22,16 @@ public final class AgendaContract {
         public static final String COLUMN_TITULO = "titulo";
         public static final String COLUMN_CONTENIDO = "contenido";
     }
+
+    // Nueva Tabla: Actividades
+    public static class ActividadEntry implements BaseColumns {
+        public static final String TABLE_NAME = "actividades";
+        public static final String COLUMN_ID = BaseColumns._ID;
+        public static final String COLUMN_TITULO = "titulo";
+        public static final String COLUMN_DESCRIPCION = "descripcion";
+        public static final String COLUMN_FECHA = "fecha"; // Formato YYYY-MM-DD
+    }
+
+
+
 }
