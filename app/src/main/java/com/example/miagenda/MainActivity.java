@@ -11,7 +11,7 @@ import com.google.android.material.card.MaterialCardView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MaterialCardView card_contactos, card_agregar, card_notas;
+    private MaterialCardView card_contactos, card_agregar, card_notas,card_calendario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,16 @@ public class MainActivity extends AppCompatActivity {
         card_notas.setOnClickListener(v -> {
             Toast.makeText(this, "Notas", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(MainActivity.this, NotaActivity.class));
+        });
+        card_calendario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+                Intent intent = new Intent(MainActivity.this, activity_calendario.class);
+
+
+                startActivity(intent);
+            }
         });
     }
 }

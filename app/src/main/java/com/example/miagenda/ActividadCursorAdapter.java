@@ -66,7 +66,7 @@ public class ActividadCursorAdapter extends RecyclerView.Adapter<ActividadCursor
     @Override
     public ActividadViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_actividad, parent, false); // Asegúrate que sea el layout correcto
+                .inflate(R.layout.activity_item_actividad, parent, false); // Asegúrate que sea el layout correcto
         return new ActividadViewHolder(view);
     }
 
