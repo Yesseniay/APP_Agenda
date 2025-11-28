@@ -127,33 +127,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36f26bc2-fa7e-442f-9bec-a52e5ec636d8" name="Changes" comment="logica para modificar, eliminar y mostrar">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/AlarmReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/BootReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/ColorApiHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/NotificationHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/NotificationScheduler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circle_accent_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circle_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_camera.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_default_profile.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_favorito_lleno.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_favorito_outline.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_llamar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/ActividadCursorAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/ActividadCursorAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/AgendaContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/AgendaContract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/AgendaManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/AgendaManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/AgregarContactoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/AgregarContactoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/DBHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/activity_actividad_escribir.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/activity_actividad_escribir.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_actividad_escribir.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_actividad_escribir.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_agregar_contacto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_agregar_contacto.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_actividad.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_actividad.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_contacto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_contacto.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/ColorApiHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/miagenda/ColorApiHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +138,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\yesse\.android\avd\pixel_7_-_api_35.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=A55FVB3B06000923)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

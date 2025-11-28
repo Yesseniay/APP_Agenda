@@ -31,7 +31,7 @@ public class ColorApiHelper {
     }
 
     private static String generateRandomColor() {
-        // Genera un color hexadecimal aleatorio
+        // Genera un color
         int color = Color.rgb(
                 (int) (Math.random() * 256),
                 (int) (Math.random() * 256),
@@ -52,7 +52,6 @@ public class ColorApiHelper {
         CATEGORY_COLORS.put("Familia", "#F06595");
         CATEGORY_COLORS.put("Urgente", "#F03E3E");
         CATEGORY_COLORS.put("General", "#868E96");
-        // Agregar más aquí si necesitas:
         CATEGORY_COLORS.put("Deportes", "#20C997");
         CATEGORY_COLORS.put("Viajes", "#FD7E14");
     }
