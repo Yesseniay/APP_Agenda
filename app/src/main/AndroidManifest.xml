@@ -18,13 +18,13 @@
         android:theme="@style/Theme.MiAgenda">
         <activity
             android:name=".activity_actividad_escribir"
-            android:exported="false" />
+             />
         <activity
             android:name=".item_actividad"
             android:exported="false" />
         <activity
             android:name=".activity_calendario"
-            android:exported="false" />
+             />
         <activity
             android:name=".ItemNotaActivity"
             android:exported="false" />
@@ -43,7 +43,7 @@
 
         <activity
             android:name=".NotaActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

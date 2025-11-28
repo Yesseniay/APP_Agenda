@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="24"
-        android:targetSdkVersion="36" />
+        android:targetSdkVersion="35" />
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -33,15 +33,11 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.MiAgenda" >
-        <activity
-            android:name="com.example.miagenda.activity_actividad_escribir"
-            android:exported="false" />
+        <activity android:name="com.example.miagenda.activity_actividad_escribir" />
         <activity
             android:name="com.example.miagenda.item_actividad"
             android:exported="false" />
-        <activity
-            android:name="com.example.miagenda.activity_calendario"
-            android:exported="false" />
+        <activity android:name="com.example.miagenda.activity_calendario" />
         <activity
             android:name="com.example.miagenda.ItemNotaActivity"
             android:exported="false" />
@@ -59,7 +55,7 @@
             android:exported="false" />
         <activity
             android:name="com.example.miagenda.NotaActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name="com.example.miagenda.MainActivity"
             android:exported="true" >

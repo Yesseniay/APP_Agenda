@@ -11,6 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.miagenda.AgendaContract.ActividadEntry;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class activity_actividad_escribir extends AppCompatActivity {
 
@@ -34,28 +37,32 @@ public class activity_actividad_escribir extends AppCompatActivity {
         setupCategorySpinner();
 
         // Obtener datos del intent
-        actividadId = getIntent().getLongExtra(activity_calendario.EXTRA_ACTIVIDAD_ID, -1);
-        fechaSeleccionada = getIntent().getStringExtra(activity_calendario.EXTRA_FECHA);
+        if (getIntent().hasExtra(activity_calendario.EXTRA_ACTIVIDAD_ID)) {
+            actividadId = getIntent().getLongExtra(activity_calendario.EXTRA_ACTIVIDAD_ID, -1);
+        }
 
+        if (getIntent().hasExtra(activity_calendario.EXTRA_FECHA)) {
+            fechaSeleccionada = getIntent().getStringExtra(activity_calendario.EXTRA_FECHA);
+        }
+
+        // Si no hay fecha, usar la actual
         if (fechaSeleccionada == null) {
-            fechaSeleccionada = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
-                    .format(new java.util.Date());
+            fechaSeleccionada = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         }
 
         tvFecha.setText("Fecha: " + fechaSeleccionada);
 
+        Button btnGuardar = findViewById(R.id.btn_actividad_guardar);
+
         if (actividadId != -1) {
-            Button btnGuardar = findViewById(R.id.btn_actividad_guardar);
             btnGuardar.setText("ACTUALIZAR");
             cargarDatosActividad(actividadId);
         } else {
-            Button btnGuardar = findViewById(R.id.btn_actividad_guardar);
             btnGuardar.setText("GUARDAR");
             // Por defecto, notificación activada para nuevas actividades
             switchNotificacion.setChecked(true);
         }
 
-        Button btnGuardar = findViewById(R.id.btn_actividad_guardar);
         btnGuardar.setOnClickListener(v -> guardarOActualizarActividad());
     }
 
@@ -67,15 +74,27 @@ public class activity_actividad_escribir extends AppCompatActivity {
         autoCompleteCategoria = findViewById(R.id.actividad_categoria);
     }
 
+    // Este es el método correcto para cargar las categorías
     private void setupCategorySpinner() {
-        String[] categories = ColorApiHelper.getAvailableCategories();
+        String[] categories;
+        try {
+            categories = ColorApiHelper.getAvailableCategories();
+        } catch (Exception e) {
+            // Si falla o no existe la clase, usamos una lista básica por seguridad
+            categories = new String[]{"General", "Trabajo", "Personal", "Urgente", "Salud"};
+        }
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_dropdown_item_1line,
                 categories
         );
         autoCompleteCategoria.setAdapter(adapter);
-        autoCompleteCategoria.setText("General", false); // Valor por defecto
+
+        // Valor por defecto si el campo está vacío
+        if (autoCompleteCategoria.getText().toString().isEmpty()) {
+            autoCompleteCategoria.setText("General", false);
+        }
     }
 
     private void cargarDatosActividad(long id) {
@@ -84,6 +103,8 @@ public class activity_actividad_escribir extends AppCompatActivity {
         if (cursor != null && cursor.moveToFirst()) {
             etTitulo.setText(cursor.getString(cursor.getColumnIndexOrThrow(ActividadEntry.COLUMN_TITULO)));
             etDescripcion.setText(cursor.getString(cursor.getColumnIndexOrThrow(ActividadEntry.COLUMN_DESCRIPCION)));
+
+            // Recuperamos la fecha guardada
             fechaSeleccionada = cursor.getString(cursor.getColumnIndexOrThrow(ActividadEntry.COLUMN_FECHA));
             tvFecha.setText("Fecha: " + fechaSeleccionada);
 
@@ -145,7 +166,7 @@ public class activity_actividad_escribir extends AppCompatActivity {
                     descripcion,
                     fechaSeleccionada,
                     "", // hora
-                    0,  // completada (mantener el valor actual o actualizar si es necesario)
+                    0,  // completada
                     notificacionActivada ? 1 : 0, // notificacion
                     categoria // NUEVO PARÁMETRO
             );

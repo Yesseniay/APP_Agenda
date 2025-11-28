@@ -30,13 +30,15 @@ public class AgendaManager {
     // CRUD CONTACTOS
 
     // Metodo para agregar contactos
-    public long agregarContacto(String nombre, String numero, String email, String notas) {
+    public long agregarContacto(String nombre, String numero, String email, String notas,byte foto, int favorito) {
         SQLiteDatabase db = getWritableDB();
         ContentValues values = new ContentValues();
         values.put(ContactoEntry.COLUMN_NAME, nombre);
         values.put(ContactoEntry.COLUMN_NUMERO, numero);
         values.put(ContactoEntry.COLUMN_EMAIL, email);
         values.put(ContactoEntry.COLUMN_NOTAS, notas);
+        values.put(ContactoEntry.COLUMN_FOTO,foto);
+        values.put(ContactoEntry.COLUMN_FAVORITO,favorito);
 
         long newRowId = db.insert(ContactoEntry.TABLE_NAME, null, values);
         db.close();

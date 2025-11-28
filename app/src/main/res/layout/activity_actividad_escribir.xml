@@ -1,84 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
+    android:background="#F4F7FA"
+    android:fillViewport="true"
     tools:context=".activity_actividad_escribir">
 
-    <TextView
-        android:id="@+id/tv_form_actividad_titulo"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nueva Actividad"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:paddingBottom="16dp"
-        android:gravity="center"/>
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <TextView
-        android:id="@+id/tv_actividad_fecha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        android:paddingBottom="16dp"
-        android:text="Fecha: 2025-01-01"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Título de la Actividad">
-        <EditText
-            android:id="@+id/et_actividad_titulo"
+        <!-- TÍTULO DE LA PANTALLA -->
+        <TextView
+            android:id="@+id/tv_form_actividad_titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapSentences"
-            android:maxLines="1"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:text="Nueva Actividad"
+            android:textColor="#12065A"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Descripción o detalles">
-        <EditText
-            android:id="@+id/et_actividad_descripcion"
+        <!-- FECHA (Estilizada en una cajita blanca) -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:minLines="3"
-            android:gravity="top"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="2dp">
 
-    <Button
-        android:id="@+id/btn_actividad_guardar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="GUARDAR ACTIVIDAD"/>
-    <!-- Agrega este Switch en tu layout -->
-    <Switch
-        android:id="@+id/switchNotificacion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Activar notificación"
-        android:checked="true"
-        android:layout_margin="8dp" />
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Categoría">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_my_calendar"
+                app:tint="#12065A"
+                android:layout_marginEnd="12dp"/>
 
-        <AutoCompleteTextView
-            android:id="@+id/actividad_categoria"
+            <TextView
+                android:id="@+id/tv_actividad_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fecha: 2025-01-01"
+                android:textSize="16sp"
+                android:textColor="#333333" />
+        </LinearLayout>
+
+        <!-- INPUT: TÍTULO -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"
-            android:completionHint="Selecciona una categoría"/>
+            android:layout_marginBottom="16dp"
+            android:hint="Título de la Actividad"
+            app:boxBackgroundColor="#FFFFFF"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/et_actividad_titulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:textColor="#333333"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-</LinearLayout>
+        <!-- INPUT: CATEGORÍA (AutoComplete) -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Categoría"
+            app:boxBackgroundColor="#FFFFFF"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/actividad_categoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:text="General"
+                android:completionHint="Selecciona una categoría"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- INPUT: DESCRIPCIÓN -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Descripción o detalles"
+            app:boxBackgroundColor="#FFFFFF"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp">
+
+            <EditText
+                android:id="@+id/et_actividad_descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:textColor="#333333"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- SWITCH DE NOTIFICACIÓN -->
+        <Switch
+            android:id="@+id/switchNotificacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Activar notificación"
+            android:checked="true"
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp"
+            android:padding="8dp" />
+
+        <!-- BOTÓN GUARDAR -->
+        <Button
+            android:id="@+id/btn_actividad_guardar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="GUARDAR ACTIVIDAD"
+            android:backgroundTint="#FF8F00"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:cornerRadius="12dp"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -14,6 +14,7 @@ public final class AgendaContract {
         public static final String COLUMN_EMAIL = "email";
         public static final String COLUMN_NOTAS = "notas";
         public static final String COLUMN_FOTO = "foto";
+        public static final String COLUMN_FAVORITO = "favorito";
     }
 
     // TABLA DE NOTAS

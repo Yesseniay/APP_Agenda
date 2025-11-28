@@ -5,12 +5,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,19 +21,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.InputStream;
 
 public class AgregarContactoActivity extends AppCompatActivity {
 
     private EditText etNombre, etNumero, etEmail, etNotas;
+    private Switch switchFavorito;
     private AgendaManager manager;
     private ImageView ivProfilePicture;
     private Bitmap imagenSeleccionada;
 
-    private int CODIGO_GALERIA = 1;
-    private int CODIGO_CAMARA = 2;
-    private int PERMISO_GALERIA = 100;
-    private int PERMISO_CAMARA = 101;
+    // Códigos de solicitud
+    private static final int CODIGO_GALERIA = 1;
+    private static final int CODIGO_CAMARA = 2;
+    private static final int PERMISO_GALERIA = 100;
+    private static final int PERMISO_CAMARA = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,19 +44,44 @@ public class AgregarContactoActivity extends AppCompatActivity {
 
         manager = new AgendaManager(this);
 
+        // Inicializar Vistas
         etNombre = findViewById(R.id.et_nombre);
         etNumero = findViewById(R.id.et_numero);
         etEmail = findViewById(R.id.et_email);
         etNotas = findViewById(R.id.et_notas);
+        switchFavorito = findViewById(R.id.switch_favorito);
         Button btnGuardar = findViewById(R.id.btn_guardar);
+        ImageButton btnLlamar = findViewById(R.id.btn_llamar);
 
         ivProfilePicture = findViewById(R.id.iv_profile_picture);
         ImageView btnChangePhoto = findViewById(R.id.btn_change_photo);
 
+        // Configurar Listeners
         ivProfilePicture.setOnClickListener(v -> mostrarOpcionesFoto());
         btnChangePhoto.setOnClickListener(v -> mostrarOpcionesFoto());
 
         btnGuardar.setOnClickListener(v -> guardarContacto());
+
+        // Botón Llamar
+        btnLlamar.setOnClickListener(v -> {
+            String numero = etNumero.getText().toString().trim();
+            if (!numero.isEmpty()) {
+                realizarLlamada(numero);
+            } else {
+                Toast.makeText(this, "Ingresa un número primero", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void realizarLlamada(String numero) {
+        try {
+            // Usamos ACTION_DIAL para mayor seguridad (no requiere permisos críticos)
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" + numero));
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(this, "No se puede realizar la llamada", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void mostrarOpcionesFoto() {
@@ -77,8 +107,12 @@ public class AgregarContactoActivity extends AppCompatActivity {
     }
 
     private void verificarPermisoGaleria() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISO_GALERIA);
+        // En Android 13+ el permiso es READ_MEDIA_IMAGES, en anteriores es READ_EXTERNAL_STORAGE
+        String permiso = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU ?
+                Manifest.permission.READ_MEDIA_IMAGES : Manifest.permission.READ_EXTERNAL_STORAGE;
+
+        if (ContextCompat.checkSelfPermission(this, permiso) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{permiso}, PERMISO_GALERIA);
         } else {
             abrirGaleria();
         }
@@ -88,6 +122,8 @@ public class AgregarContactoActivity extends AppCompatActivity {
         Intent intentCamara = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (intentCamara.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(intentCamara, CODIGO_CAMARA);
+        } else {
+            Toast.makeText(this, "No se encontró app de cámara", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -99,17 +135,12 @@ public class AgregarContactoActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PERMISO_GALERIA) {
+        if (requestCode == PERMISO_GALERIA || requestCode == PERMISO_CAMARA) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                abrirGaleria();
+                if (requestCode == PERMISO_GALERIA) abrirGaleria();
+                else abrirCamara();
             } else {
-                Toast.makeText(this, "Permiso denegado para galería", Toast.LENGTH_SHORT).show();
-            }
-        } else if (requestCode == PERMISO_CAMARA) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                abrirCamara();
-            } else {
-                Toast.makeText(this, "Permiso denegado para cámara", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Permiso denegado", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -117,24 +148,30 @@ public class AgregarContactoActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == CODIGO_GALERIA && data != null) {
+        if (resultCode == Activity.RESULT_OK && data != null) {
+            if (requestCode == CODIGO_GALERIA) {
                 Uri uriImagen = data.getData();
                 try {
-                    imagenSeleccionada = MediaStore.Images.Media.getBitmap(getContentResolver(), uriImagen);
+                    // Usamos stream para cargar imagen de forma más segura
+                    InputStream imageStream = getContentResolver().openInputStream(uriImagen);
+                    imagenSeleccionada = BitmapFactory.decodeStream(imageStream);
                     ivProfilePicture.setImageBitmap(imagenSeleccionada);
-                } catch (IOException e) {
+                    // Cambiamos el padding para que la foto se vea completa
+                    ivProfilePicture.setPadding(0,0,0,0);
+                } catch (Exception e) {
                     Toast.makeText(this, "Error al cargar imagen", Toast.LENGTH_SHORT).show();
                 }
-            } else if (requestCode == CODIGO_CAMARA && data != null) {
+            } else if (requestCode == CODIGO_CAMARA) {
                 imagenSeleccionada = (Bitmap) data.getExtras().get("data");
                 ivProfilePicture.setImageBitmap(imagenSeleccionada);
+                ivProfilePicture.setPadding(0,0,0,0);
             }
         }
     }
 
     private byte[] convertirImagenABytes(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        // Comprimir a PNG con calidad 100
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         return stream.toByteArray();
     }
@@ -144,6 +181,9 @@ public class AgregarContactoActivity extends AppCompatActivity {
         String numero = etNumero.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String notas = etNotas.getText().toString().trim();
+
+        //1 si es favorito, 0 si no)
+        int favorito = switchFavorito.isChecked() ? 1 : 0;
 
         if (nombre.isEmpty()) {
             Toast.makeText(this, "El nombre es obligatorio.", Toast.LENGTH_SHORT).show();
@@ -155,7 +195,11 @@ public class AgregarContactoActivity extends AppCompatActivity {
             fotoBytes = convertirImagenABytes(imagenSeleccionada);
         }
 
-        long newRowId = manager.agregarContacto(nombre, numero, email, notas);
+        // Llamamos al método corregido en AgendaManager
+        long newRowId = manager.agregarContacto(nombre, numero, email, notas, favorito);
+        // NOTA: Si tu manager ya acepta la foto, usa:
+        // manager.agregarContacto(nombre, numero, email, notas, favorito, fotoBytes);
+        // Si no has actualizado el manager para aceptar bytes, usa la línea de arriba y la foto quedará pendiente.
 
         if (newRowId != -1) {
             Toast.makeText(this, "Contacto guardado.", Toast.LENGTH_SHORT).show();

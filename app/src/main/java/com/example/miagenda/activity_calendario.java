@@ -3,6 +3,7 @@ package com.example.miagenda;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.CalendarView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,66 +31,95 @@ public class activity_calendario extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendario);
 
-        manager = new AgendaManager(this);
-        dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        try {
+            manager = new AgendaManager(this);
+            dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
-        calendarView = findViewById(R.id.calendar_view);
-        RecyclerView recyclerView = findViewById(R.id.rv_actividades);
-        FloatingActionButton fabAddActividad = findViewById(R.id.fab_add_actividad);
+            calendarView = findViewById(R.id.calendar_view);
+            RecyclerView recyclerView = findViewById(R.id.rv_actividades);
+            FloatingActionButton fabAddActividad = findViewById(R.id.fab_add_actividad);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Establecer la fecha actual como inicial
-        Calendar cal = Calendar.getInstance();
-        fechaActualSeleccionada = dateFormat.format(cal.getTime());
-
-        Cursor initialCursor = manager.buscarActividadesPorFecha(fechaActualSeleccionada);
-        adapter = new ActividadCursorAdapter(initialCursor, this);
-        recyclerView.setAdapter(adapter);
-
-        // Listener para el cambio de fecha en el calendario
-        calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
-            cal.set(year, month, dayOfMonth);
+            // Establecer la fecha actual como inicial
+            Calendar cal = Calendar.getInstance();
             fechaActualSeleccionada = dateFormat.format(cal.getTime());
-            cargarActividades(fechaActualSeleccionada);
-        });
 
-        // Botón FAB para agregar una nueva actividad en la fecha seleccionada
-        fabAddActividad.setOnClickListener(v -> {
-            Intent intent = new Intent(activity_calendario.this, activity_actividad_escribir.class);
-            intent.putExtra(EXTRA_FECHA, fechaActualSeleccionada);
-            startActivity(intent);
-        });
+            // Cargar datos (si la DB está vacía o nueva, esto funcionará)
+            Cursor initialCursor = manager.buscarActividadesPorFecha(fechaActualSeleccionada);
+            adapter = new ActividadCursorAdapter(initialCursor, this);
+            recyclerView.setAdapter(adapter);
+
+            // Listener para el cambio de fecha
+            calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
+                Calendar c = Calendar.getInstance();
+                c.set(year, month, dayOfMonth);
+                fechaActualSeleccionada = dateFormat.format(c.getTime());
+                cargarActividades(fechaActualSeleccionada);
+            });
+
+            // --- BOTÓN CON PROTECCIÓN CONTRA ERRORES ---
+            fabAddActividad.setOnClickListener(v -> {
+                try {
+                    Intent intent = new Intent(activity_calendario.this, activity_actividad_escribir.class);
+                    // Aseguramos que la fecha no vaya nula
+                    if (fechaActualSeleccionada == null) {
+                        fechaActualSeleccionada = dateFormat.format(Calendar.getInstance().getTime());
+                    }
+                    intent.putExtra(EXTRA_FECHA, fechaActualSeleccionada);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    // Si falla, te dirá el error en pantalla
+                    Toast.makeText(activity_calendario.this, "Error al abrir: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            });
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Error de inicio: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // Recargar la lista al volver de crear o editar
-        cargarActividades(fechaActualSeleccionada);
+        if (manager != null && fechaActualSeleccionada != null) {
+            cargarActividades(fechaActualSeleccionada);
+        }
     }
 
     private void cargarActividades(String fecha) {
-        Cursor nuevoCursor = manager.buscarActividadesPorFecha(fecha);
-        adapter.swapCursor(nuevoCursor);
+        if (manager == null || adapter == null) return;
+        try {
+            Cursor nuevoCursor = manager.buscarActividadesPorFecha(fecha);
+            adapter.swapCursor(nuevoCursor);
+        } catch (Exception e) {
+            Log.e("Calendario", "Error cargando actividades", e);
+        }
     }
 
-    // Implementación del Adaptador: Navega a la Activity de edición
     @Override
     public void onEditClick(long id) {
-        Intent intent = new Intent(activity_calendario.this, activity_actividad_escribir.class);
-        intent.putExtra(EXTRA_ACTIVIDAD_ID, id);
-        startActivity(intent);
+        try {
+            Intent intent = new Intent(activity_calendario.this, activity_actividad_escribir.class);
+            intent.putExtra(EXTRA_ACTIVIDAD_ID, id);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(this, "Error al editar", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    // Implementación del Adaptador: Elimina directamente
     @Override
     public void onDeleteClick(long id) {
-        if (manager.eliminarActividad(id) > 0) {
-            Toast.makeText(this, "Actividad eliminada.", Toast.LENGTH_SHORT).show();
-            cargarActividades(fechaActualSeleccionada); // Actualiza la lista
-        } else {
-            Toast.makeText(this, "Error al eliminar la actividad.", Toast.LENGTH_SHORT).show();
+        try {
+            if (manager.eliminarActividad(id) > 0) {
+                Toast.makeText(this, "Actividad eliminada.", Toast.LENGTH_SHORT).show();
+                cargarActividades(fechaActualSeleccionada);
+            } else {
+                Toast.makeText(this, "Error al eliminar.", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Error de base de datos", Toast.LENGTH_SHORT).show();
         }
     }
 }

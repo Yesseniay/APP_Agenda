@@ -9,6 +9,7 @@ drawable contactos
 drawable edittext_border
 drawable gradient_background
 drawable gt
+drawable ic_calendario
 drawable ic_camera
 drawable ic_default_profile
 drawable ic_favorito_lleno
@@ -42,6 +43,8 @@ id btn_llamar
 id buscador
 id calendar_view
 id card_agregar
+id card_calendar
+id card_calendario
 id card_contactos
 id card_notas
 id color_indicator
@@ -54,6 +57,7 @@ id et_notas
 id et_numero
 id fab_add_actividad
 id guideline
+id header_bg
 id iv_profile_picture
 id main
 id rv_actividades

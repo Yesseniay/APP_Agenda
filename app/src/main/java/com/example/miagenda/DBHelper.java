@@ -19,14 +19,15 @@ public class DBHelper extends SQLiteOpenHelper {
                     ContactoEntry.COLUMN_NAME + " TEXT NOT NULL," +
                     ContactoEntry.COLUMN_NUMERO + " TEXT UNIQUE," +
                     ContactoEntry.COLUMN_EMAIL + " TEXT UNIQUE," +
-                    ContactoEntry.COLUMN_NOTAS + " TEXT"+
-                    ContactoEntry.COLUMN_FOTO  + "BLOB);";
+                    ContactoEntry.COLUMN_NOTAS + " TEXT,"+
+                    ContactoEntry.COLUMN_FOTO  + "  BLOB,"+
+                    ContactoEntry.COLUMN_FAVORITO + " INT );";
 
     private static final String SQL_CREATE_NOTAS =
             "CREATE TABLE " + NotaEntry.TABLE_NAME + " (" +
                     NotaEntry.COLUMN_ID + " INTEGER PRIMARY KEY," +
                     NotaEntry.COLUMN_TITULO + " TEXT NOT NULL," +
-                    NotaEntry.COLUMN_CONTENIDO + " TEXT)";
+                    NotaEntry.COLUMN_CONTENIDO + " TEXT);";
     public static final String SQL_CREATE_ACTIVIDAD =
             "CREATE TABLE " + ActividadEntry.TABLE_NAME + " (" +
                     ActividadEntry.COLUMN_ID + " INTEGER PRIMARY KEY," +
@@ -35,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     ActividadEntry.COLUMN_FECHA + " TEXT NOT NULL,"+
                     ActividadEntry.COLUMN_HORA + " TEXT," +
                     ActividadEntry.COLUMN_COMPLETADA + " INTEGER DEFAULT 0," +
-                    ActividadEntry.COLUMN_NOTIFICACION + " INTEGER DEFAULT 1"+
+                    ActividadEntry.COLUMN_NOTIFICACION + " INTEGER DEFAULT 1,"+
                     ActividadEntry.COLUMN_CATEGORIA + " TEXT DEFAULT 'General');";
 
     public DBHelper(Context context) {

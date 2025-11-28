@@ -4,17 +4,19 @@ ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManif
 INJECTED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:2:1-71:12
 INJECTED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:2:1-71:12
 INJECTED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:2:1-71:12
-MERGED from [com.google.android.material:material:1.13.0] C:\Users\yesse\.gradle\caches\8.13\transforms\0507d2f90fe1cea4beecf23da95f6c11\transformed\material-1.13.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\yesse\.gradle\caches\8.13\transforms\bc5993214a67e835d24c36f67fb7783f\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\yesse\.gradle\caches\8.13\transforms\ed9267c2f06c2be55b2e37706175211a\transformed\constraintlayout-2.2.1\AndroidManifest.xml:2:1-9:12
-MERGED from [androidx.appcompat:appcompat-resources:1.7.1] C:\Users\yesse\.gradle\caches\8.13\transforms\b36d6092087128a58129702649a4bf84\transformed\appcompat-resources-1.7.1\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.appcompat:appcompat:1.7.1] C:\Users\yesse\.gradle\caches\8.13\transforms\6978c61660b365e3a1bd700b2ae912e9\transformed\appcompat-1.7.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\yesse\.gradle\caches\8.13\transforms\12561ae49b2a144da9686b59faacfd37\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat:1.7.0] C:\Users\yesse\.gradle\caches\8.13\transforms\46bb30289cc9a69912f32cd88bb53a6c\transformed\appcompat-1.7.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\5a0e025ea4f1353235d998f964e2bca5\transformed\viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment:1.5.4] C:\Users\yesse\.gradle\caches\8.13\transforms\f668cc508763c339aba1f07b5f496d1c\transformed\fragment-1.5.4\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.activity:activity:1.11.0] C:\Users\yesse\.gradle\caches\8.13\transforms\0d813a1a3628abfec25d8fe69f5d9f96\transformed\activity-1.11.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.graphics:graphics-shapes-android:1.0.1] C:\Users\yesse\.gradle\caches\8.13\transforms\31eaeba5d3620b7f9ca3050409571210\transformed\graphics-shapes-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.9.0] C:\Users\yesse\.gradle\caches\8.13\transforms\299718690ae3cf5787e35e2543d867b3\transformed\activity-1.9.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\yesse\.gradle\caches\8.13\transforms\1f8252329f8dfaf3b8bbcd7c8e51df39\transformed\savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\yesse\.gradle\caches\8.13\transforms\3383a6fbecca9d89747210929c6b4282\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\yesse\.gradle\caches\8.13\transforms\eea06e3f11327653673cfb076061f644\transformed\emoji2-1.3.0\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.transition:transition:1.5.0] C:\Users\yesse\.gradle\caches\8.13\transforms\16903ffbc37324e5b81f1e53f64d82a6\transformed\transition-1.5.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\c22958256dbc3e23a52af0ef9531e7d4\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\2728bd65f61cf10c9a670832c881ced2\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\18480e151c1d61e6241590d7a4dcf7f4\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\yesse\.gradle\caches\8.13\transforms\7d7200d750930dd2549f1617b30399c6\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\yesse\.gradle\caches\8.13\transforms\deef096b3c0915c807ca88787c5a5575\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:17:1-22:12
@@ -25,12 +27,10 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\y
 MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\yesse\.gradle\caches\8.13\transforms\38763f2a2ef1af56264da7c8fcfc68d6\transformed\core-ktx-1.13.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\yesse\.gradle\caches\8.13\transforms\1416b1072a8945de91859147c3e39fcb\transformed\drawerlayout-1.1.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\20f9027d0c538413a12fefbbe83d409d\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.transition:transition:1.5.0] C:\Users\yesse\.gradle\caches\8.13\transforms\16903ffbc37324e5b81f1e53f64d82a6\transformed\transition-1.5.0\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\0b3c604ec2560024b6cb57dae9e755c9\transformed\dynamicanimation-1.1.0\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\yesse\.gradle\caches\8.13\transforms\183f54bfeb9da38d208704daa9d4cbee\transformed\recyclerview-1.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\a09deffd4a760c595b373a146112ed2e\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\465928fc68b20979ffcb7837ed10bd07\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\ac4a6e8248a57461d8a8ca307fb56971\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\a35c4576e4ae05beac21e7a62e84c451\transformed\recyclerview-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.customview:customview:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\f3404e37d4336cbe25b847272a856ea7\transformed\customview-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.core:core:1.13.0] C:\Users\yesse\.gradle\caches\8.13\transforms\25d2a57d872a7f1da640ce950a40d91b\transformed\core-1.13.0\AndroidManifest.xml:17:1-30:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\50c60a8b730e464311e234dfb6646630\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -41,8 +41,10 @@ MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\yesse\.gradle\caches\8.13\
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\bb2566a2ab28deea655de4eaac2a113d\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\yesse\.gradle\caches\8.13\transforms\7078270a4c5299bd66f4b01faa9130ac\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\yesse\.gradle\caches\8.13\transforms\8f3deaf6099bbb585328dd4a98a4833a\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.core:core-viewtree:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\51253a64b6c7f386af14a177c428d607\transformed\core-viewtree-1.0.0\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\yesse\.gradle\caches\8.13\transforms\ba5af0e1fdb75875bc4e6992b4a8b914\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\3e80e7ddb14aaf2d6b21f2a651172c6f\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\45a56ff2529bac9472a4189d7335bebe\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\938c9abcc890a70bd8ff3b1b3ae2b8f4\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\yesse\.gradle\caches\8.13\transforms\5eb099a03be829ec2d4edef20b1429ba\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:2:1-7:12
 	package
 		INJECTED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml
 	android:versionName
@@ -76,8 +78,8 @@ ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManif
 application
 ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:10:5-69:19
 INJECTED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:10:5-69:19
-MERGED from [com.google.android.material:material:1.13.0] C:\Users\yesse\.gradle\caches\8.13\transforms\0507d2f90fe1cea4beecf23da95f6c11\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.material:material:1.13.0] C:\Users\yesse\.gradle\caches\8.13\transforms\0507d2f90fe1cea4beecf23da95f6c11\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\yesse\.gradle\caches\8.13\transforms\bc5993214a67e835d24c36f67fb7783f\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\yesse\.gradle\caches\8.13\transforms\bc5993214a67e835d24c36f67fb7783f\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\yesse\.gradle\caches\8.13\transforms\ed9267c2f06c2be55b2e37706175211a\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\yesse\.gradle\caches\8.13\transforms\ed9267c2f06c2be55b2e37706175211a\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
 MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\yesse\.gradle\caches\8.13\transforms\eea06e3f11327653673cfb076061f644\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
@@ -113,9 +115,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ye
 	android:dataExtractionRules
 		ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:12:9-65
 activity#com.example.miagenda.activity_actividad_escribir
-ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:19:9-21:40
-	android:exported
-		ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:21:13-37
+ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:19:9-21:16
 	android:name
 		ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:20:13-56
 activity#com.example.miagenda.item_actividad
@@ -125,9 +125,7 @@ ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManif
 	android:name
 		ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:23:13-43
 activity#com.example.miagenda.activity_calendario
-ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:25:9-27:40
-	android:exported
-		ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:27:13-37
+ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:25:9-27:16
 	android:name
 		ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:26:13-48
 activity#com.example.miagenda.ItemNotaActivity
@@ -161,9 +159,9 @@ ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManif
 	android:name
 		ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:41:13-52
 activity#com.example.miagenda.NotaActivity
-ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:44:9-46:40
+ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:44:9-46:39
 	android:exported
-		ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:46:13-37
+		ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:46:13-36
 	android:name
 		ADDED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml:45:13-41
 activity#com.example.miagenda.MainActivity
@@ -208,28 +206,32 @@ uses-sdk
 INJECTED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml
-MERGED from [com.google.android.material:material:1.13.0] C:\Users\yesse\.gradle\caches\8.13\transforms\0507d2f90fe1cea4beecf23da95f6c11\transformed\material-1.13.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.13.0] C:\Users\yesse\.gradle\caches\8.13\transforms\0507d2f90fe1cea4beecf23da95f6c11\transformed\material-1.13.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\yesse\.gradle\caches\8.13\transforms\bc5993214a67e835d24c36f67fb7783f\transformed\material-1.12.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.12.0] C:\Users\yesse\.gradle\caches\8.13\transforms\bc5993214a67e835d24c36f67fb7783f\transformed\material-1.12.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\yesse\.gradle\caches\8.13\transforms\ed9267c2f06c2be55b2e37706175211a\transformed\constraintlayout-2.2.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\yesse\.gradle\caches\8.13\transforms\ed9267c2f06c2be55b2e37706175211a\transformed\constraintlayout-2.2.1\AndroidManifest.xml:5:5-44
-MERGED from [androidx.appcompat:appcompat-resources:1.7.1] C:\Users\yesse\.gradle\caches\8.13\transforms\b36d6092087128a58129702649a4bf84\transformed\appcompat-resources-1.7.1\AndroidManifest.xml:5:5-44
-MERGED from [androidx.appcompat:appcompat-resources:1.7.1] C:\Users\yesse\.gradle\caches\8.13\transforms\b36d6092087128a58129702649a4bf84\transformed\appcompat-resources-1.7.1\AndroidManifest.xml:5:5-44
-MERGED from [androidx.appcompat:appcompat:1.7.1] C:\Users\yesse\.gradle\caches\8.13\transforms\6978c61660b365e3a1bd700b2ae912e9\transformed\appcompat-1.7.1\AndroidManifest.xml:5:5-44
-MERGED from [androidx.appcompat:appcompat:1.7.1] C:\Users\yesse\.gradle\caches\8.13\transforms\6978c61660b365e3a1bd700b2ae912e9\transformed\appcompat-1.7.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\yesse\.gradle\caches\8.13\transforms\12561ae49b2a144da9686b59faacfd37\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\yesse\.gradle\caches\8.13\transforms\12561ae49b2a144da9686b59faacfd37\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.0] C:\Users\yesse\.gradle\caches\8.13\transforms\46bb30289cc9a69912f32cd88bb53a6c\transformed\appcompat-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.0] C:\Users\yesse\.gradle\caches\8.13\transforms\46bb30289cc9a69912f32cd88bb53a6c\transformed\appcompat-1.7.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\5a0e025ea4f1353235d998f964e2bca5\transformed\viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\5a0e025ea4f1353235d998f964e2bca5\transformed\viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.5.4] C:\Users\yesse\.gradle\caches\8.13\transforms\f668cc508763c339aba1f07b5f496d1c\transformed\fragment-1.5.4\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.5.4] C:\Users\yesse\.gradle\caches\8.13\transforms\f668cc508763c339aba1f07b5f496d1c\transformed\fragment-1.5.4\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.11.0] C:\Users\yesse\.gradle\caches\8.13\transforms\0d813a1a3628abfec25d8fe69f5d9f96\transformed\activity-1.11.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.activity:activity:1.11.0] C:\Users\yesse\.gradle\caches\8.13\transforms\0d813a1a3628abfec25d8fe69f5d9f96\transformed\activity-1.11.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.graphics:graphics-shapes-android:1.0.1] C:\Users\yesse\.gradle\caches\8.13\transforms\31eaeba5d3620b7f9ca3050409571210\transformed\graphics-shapes-release\AndroidManifest.xml:5:5-44
-MERGED from [androidx.graphics:graphics-shapes-android:1.0.1] C:\Users\yesse\.gradle\caches\8.13\transforms\31eaeba5d3620b7f9ca3050409571210\transformed\graphics-shapes-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.9.0] C:\Users\yesse\.gradle\caches\8.13\transforms\299718690ae3cf5787e35e2543d867b3\transformed\activity-1.9.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.9.0] C:\Users\yesse\.gradle\caches\8.13\transforms\299718690ae3cf5787e35e2543d867b3\transformed\activity-1.9.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\yesse\.gradle\caches\8.13\transforms\1f8252329f8dfaf3b8bbcd7c8e51df39\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\yesse\.gradle\caches\8.13\transforms\1f8252329f8dfaf3b8bbcd7c8e51df39\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\yesse\.gradle\caches\8.13\transforms\3383a6fbecca9d89747210929c6b4282\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\yesse\.gradle\caches\8.13\transforms\3383a6fbecca9d89747210929c6b4282\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\yesse\.gradle\caches\8.13\transforms\eea06e3f11327653673cfb076061f644\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
 MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\yesse\.gradle\caches\8.13\transforms\eea06e3f11327653673cfb076061f644\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.transition:transition:1.5.0] C:\Users\yesse\.gradle\caches\8.13\transforms\16903ffbc37324e5b81f1e53f64d82a6\transformed\transition-1.5.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.transition:transition:1.5.0] C:\Users\yesse\.gradle\caches\8.13\transforms\16903ffbc37324e5b81f1e53f64d82a6\transformed\transition-1.5.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\c22958256dbc3e23a52af0ef9531e7d4\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\c22958256dbc3e23a52af0ef9531e7d4\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\2728bd65f61cf10c9a670832c881ced2\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\2728bd65f61cf10c9a670832c881ced2\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\18480e151c1d61e6241590d7a4dcf7f4\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\18480e151c1d61e6241590d7a4dcf7f4\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\yesse\.gradle\caches\8.13\transforms\7d7200d750930dd2549f1617b30399c6\transformed\lifecycle-livedata-2.6.2\AndroidManifest.xml:20:5-44
@@ -250,18 +252,14 @@ MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\yesse\.gradle\ca
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\yesse\.gradle\caches\8.13\transforms\1416b1072a8945de91859147c3e39fcb\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\20f9027d0c538413a12fefbbe83d409d\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\20f9027d0c538413a12fefbbe83d409d\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.transition:transition:1.5.0] C:\Users\yesse\.gradle\caches\8.13\transforms\16903ffbc37324e5b81f1e53f64d82a6\transformed\transition-1.5.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.transition:transition:1.5.0] C:\Users\yesse\.gradle\caches\8.13\transforms\16903ffbc37324e5b81f1e53f64d82a6\transformed\transition-1.5.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\0b3c604ec2560024b6cb57dae9e755c9\transformed\dynamicanimation-1.1.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\0b3c604ec2560024b6cb57dae9e755c9\transformed\dynamicanimation-1.1.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\yesse\.gradle\caches\8.13\transforms\183f54bfeb9da38d208704daa9d4cbee\transformed\recyclerview-1.2.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.recyclerview:recyclerview:1.2.1] C:\Users\yesse\.gradle\caches\8.13\transforms\183f54bfeb9da38d208704daa9d4cbee\transformed\recyclerview-1.2.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\a09deffd4a760c595b373a146112ed2e\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\a09deffd4a760c595b373a146112ed2e\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\465928fc68b20979ffcb7837ed10bd07\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\465928fc68b20979ffcb7837ed10bd07\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\ac4a6e8248a57461d8a8ca307fb56971\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\ac4a6e8248a57461d8a8ca307fb56971\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\a35c4576e4ae05beac21e7a62e84c451\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\a35c4576e4ae05beac21e7a62e84c451\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.customview:customview:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\f3404e37d4336cbe25b847272a856ea7\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.customview:customview:1.1.0] C:\Users\yesse\.gradle\caches\8.13\transforms\f3404e37d4336cbe25b847272a856ea7\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core:1.13.0] C:\Users\yesse\.gradle\caches\8.13\transforms\25d2a57d872a7f1da640ce950a40d91b\transformed\core-1.13.0\AndroidManifest.xml:20:5-44
@@ -282,10 +280,14 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ye
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\yesse\.gradle\caches\8.13\transforms\7078270a4c5299bd66f4b01faa9130ac\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\yesse\.gradle\caches\8.13\transforms\8f3deaf6099bbb585328dd4a98a4833a\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\yesse\.gradle\caches\8.13\transforms\8f3deaf6099bbb585328dd4a98a4833a\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core-viewtree:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\51253a64b6c7f386af14a177c428d607\transformed\core-viewtree-1.0.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.core:core-viewtree:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\51253a64b6c7f386af14a177c428d607\transformed\core-viewtree-1.0.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\yesse\.gradle\caches\8.13\transforms\ba5af0e1fdb75875bc4e6992b4a8b914\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
-MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\yesse\.gradle\caches\8.13\transforms\ba5af0e1fdb75875bc4e6992b4a8b914\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\3e80e7ddb14aaf2d6b21f2a651172c6f\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\3e80e7ddb14aaf2d6b21f2a651172c6f\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\45a56ff2529bac9472a4189d7335bebe\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\45a56ff2529bac9472a4189d7335bebe\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\938c9abcc890a70bd8ff3b1b3ae2b8f4\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\yesse\.gradle\caches\8.13\transforms\938c9abcc890a70bd8ff3b1b3ae2b8f4\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\yesse\.gradle\caches\8.13\transforms\5eb099a03be829ec2d4edef20b1429ba\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\yesse\.gradle\caches\8.13\transforms\5eb099a03be829ec2d4edef20b1429ba\transformed\annotation-experimental-1.4.0\AndroidManifest.xml:5:5-44
 	android:targetSdkVersion
 		INJECTED from C:\Users\yesse\Music\repositorio\APP_Agenda\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
