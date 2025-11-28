@@ -30,6 +30,7 @@ public class ActividadCursorAdapter extends RecyclerView.Adapter<ActividadCursor
         public TextView tvDescripcion;
         public Button btnEditar;
         public Button btnEliminar;
+        public View colorIndicator; // Añade esta línea
 
         public ActividadViewHolder(View itemView) {
             super(itemView);
@@ -38,12 +39,13 @@ public class ActividadCursorAdapter extends RecyclerView.Adapter<ActividadCursor
             tvDescripcion = itemView.findViewById(R.id.tv_descripcion_actividad);
             btnEditar = itemView.findViewById(R.id.btn_editar_actividad);
             btnEliminar = itemView.findViewById(R.id.btn_eliminar_actividad);
+            colorIndicator = itemView.findViewById(R.id.color_indicator); // Añade esta línea
 
             // Clics en botones
             btnEliminar.setOnClickListener(v -> {
                 if (listener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
                     mCursor.moveToPosition(getAdapterPosition());
-                    long id = mCursor.getLong(mCursor.getColumnIndexOrThrow(ActividadEntry.COLUMN_ID));
+                    long id = mCursor.getLong(mCursor.getColumnIndexOrThrow(ActividadEntry._ID));
                     listener.onDeleteClick(id);
                 }
             });
@@ -51,7 +53,7 @@ public class ActividadCursorAdapter extends RecyclerView.Adapter<ActividadCursor
             View.OnClickListener editListener = v -> {
                 if (listener != null && getAdapterPosition() != RecyclerView.NO_POSITION) {
                     mCursor.moveToPosition(getAdapterPosition());
-                    long id = mCursor.getLong(mCursor.getColumnIndexOrThrow(ActividadEntry.COLUMN_ID));
+                    long id = mCursor.getLong(mCursor.getColumnIndexOrThrow(ActividadEntry._ID));
                     listener.onEditClick(id);
                 }
             };
@@ -64,7 +66,7 @@ public class ActividadCursorAdapter extends RecyclerView.Adapter<ActividadCursor
     @Override
     public ActividadViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_item_actividad, parent, false);
+                .inflate(R.layout.item_actividad, parent, false); // Asegúrate que sea el layout correcto
         return new ActividadViewHolder(view);
     }
 
@@ -75,8 +77,18 @@ public class ActividadCursorAdapter extends RecyclerView.Adapter<ActividadCursor
         String titulo = mCursor.getString(mCursor.getColumnIndexOrThrow(ActividadEntry.COLUMN_TITULO));
         String descripcion = mCursor.getString(mCursor.getColumnIndexOrThrow(ActividadEntry.COLUMN_DESCRIPCION));
 
+        // OBTENER CATEGORÍA Y APLICAR COLOR
+        String categoria = mCursor.getString(mCursor.getColumnIndexOrThrow(ActividadEntry.COLUMN_CATEGORIA));
+        String colorHex = ColorApiHelper.getColorForCategory(categoria);
+        int color = ColorApiHelper.getColorInt(colorHex);
+
         holder.tvTitulo.setText(titulo);
         holder.tvDescripcion.setText(descripcion);
+
+        // APLICAR COLOR AL INDICADOR
+        if (holder.colorIndicator != null) {
+            holder.colorIndicator.setBackgroundColor(color);
+        }
     }
 
     @Override

@@ -37,6 +37,7 @@ public class AgendaManager {
         values.put(ContactoEntry.COLUMN_NUMERO, numero);
         values.put(ContactoEntry.COLUMN_EMAIL, email);
         values.put(ContactoEntry.COLUMN_NOTAS, notas);
+
         long newRowId = db.insert(ContactoEntry.TABLE_NAME, null, values);
         db.close();
         return newRowId;
@@ -206,5 +207,109 @@ public class AgendaManager {
         int deletedRows = db.delete(AgendaContract.ActividadEntry.TABLE_NAME, selection, selectionArgs);
         db.close();
         return deletedRows;
+    }
+
+    // MÉTODOS NUEVOS PARA NOTIFICACIONES
+    public Cursor getActividadesPendientesHoy() {
+        SQLiteDatabase db = getReadableDB();
+        String today = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
+                .format(new java.util.Date());
+
+        String query = "SELECT * FROM " + AgendaContract.ActividadEntry.TABLE_NAME +
+                " WHERE " + AgendaContract.ActividadEntry.COLUMN_FECHA + " = ?" +
+                " AND " + AgendaContract.ActividadEntry.COLUMN_COMPLETADA + " = 0" +
+                " AND " + AgendaContract.ActividadEntry.COLUMN_NOTIFICACION + " = 1";
+
+        return db.rawQuery(query, new String[]{today});
+    }
+
+    public Cursor getActividadesPendientesProximas() {
+        SQLiteDatabase db = getReadableDB();
+        String today = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
+                .format(new java.util.Date());
+
+        String query = "SELECT * FROM " + AgendaContract.ActividadEntry.TABLE_NAME +
+                " WHERE " + AgendaContract.ActividadEntry.COLUMN_FECHA + " >= ?" +
+                " AND " + AgendaContract.ActividadEntry.COLUMN_COMPLETADA + " = 0" +
+                " AND " + AgendaContract.ActividadEntry.COLUMN_NOTIFICACION + " = 1" +
+                " ORDER BY " + AgendaContract.ActividadEntry.COLUMN_FECHA + " ASC" +
+                " LIMIT 5";
+
+        return db.rawQuery(query, new String[]{today});
+    }
+
+    // Método para agregar actividad
+    public long agregarActividadCompleta(String titulo, String descripcion, String fecha, String hora,
+                                         int completada, int notificacion) {
+        SQLiteDatabase db = getWritableDB();
+        ContentValues values = new ContentValues();
+        values.put(AgendaContract.ActividadEntry.COLUMN_TITULO, titulo);
+        values.put(AgendaContract.ActividadEntry.COLUMN_DESCRIPCION, descripcion);
+        values.put(AgendaContract.ActividadEntry.COLUMN_FECHA, fecha);
+        values.put(AgendaContract.ActividadEntry.COLUMN_HORA, hora);
+        values.put(AgendaContract.ActividadEntry.COLUMN_COMPLETADA, completada);
+        values.put(AgendaContract.ActividadEntry.COLUMN_NOTIFICACION, notificacion);
+
+        long newRowId = db.insert(AgendaContract.ActividadEntry.TABLE_NAME, null, values);
+        db.close();
+        return newRowId;
+    }
+
+    // Método para actualizar
+    public int actualizarActividadCompleta(long id, String titulo, String descripcion, String fecha,
+                                           String hora, int completada, int notificacion) {
+        SQLiteDatabase db = getWritableDB();
+        ContentValues values = new ContentValues();
+        values.put(AgendaContract.ActividadEntry.COLUMN_TITULO, titulo);
+        values.put(AgendaContract.ActividadEntry.COLUMN_DESCRIPCION, descripcion);
+        values.put(AgendaContract.ActividadEntry.COLUMN_FECHA, fecha);
+        values.put(AgendaContract.ActividadEntry.COLUMN_HORA, hora);
+        values.put(AgendaContract.ActividadEntry.COLUMN_COMPLETADA, completada);
+        values.put(AgendaContract.ActividadEntry.COLUMN_NOTIFICACION, notificacion);
+
+        String selection = AgendaContract.ActividadEntry._ID + " = ?";
+        String[] selectionArgs = { String.valueOf(id) };
+
+        int count = db.update(AgendaContract.ActividadEntry.TABLE_NAME, values, selection, selectionArgs);
+        db.close();
+        return count;
+    }
+    // Método para agregar actividad completa CON CATEGORÍA
+    public long agregarActividadCompleta(String titulo, String descripcion, String fecha, String hora,
+                                         int completada, int notificacion, String categoria) {
+        SQLiteDatabase db = getWritableDB();
+        ContentValues values = new ContentValues();
+        values.put(AgendaContract.ActividadEntry.COLUMN_TITULO, titulo);
+        values.put(AgendaContract.ActividadEntry.COLUMN_DESCRIPCION, descripcion);
+        values.put(AgendaContract.ActividadEntry.COLUMN_FECHA, fecha);
+        values.put(AgendaContract.ActividadEntry.COLUMN_HORA, hora);
+        values.put(AgendaContract.ActividadEntry.COLUMN_COMPLETADA, completada);
+        values.put(AgendaContract.ActividadEntry.COLUMN_NOTIFICACION, notificacion);
+        values.put(AgendaContract.ActividadEntry.COLUMN_CATEGORIA, categoria); // NUEVO
+
+        long newRowId = db.insert(AgendaContract.ActividadEntry.TABLE_NAME, null, values);
+        db.close();
+        return newRowId;
+    }
+
+    // Método para actualizar actividad completa CON CATEGORÍA
+    public int actualizarActividadCompleta(long id, String titulo, String descripcion, String fecha,
+                                           String hora, int completada, int notificacion, String categoria) {
+        SQLiteDatabase db = getWritableDB();
+        ContentValues values = new ContentValues();
+        values.put(AgendaContract.ActividadEntry.COLUMN_TITULO, titulo);
+        values.put(AgendaContract.ActividadEntry.COLUMN_DESCRIPCION, descripcion);
+        values.put(AgendaContract.ActividadEntry.COLUMN_FECHA, fecha);
+        values.put(AgendaContract.ActividadEntry.COLUMN_HORA, hora);
+        values.put(AgendaContract.ActividadEntry.COLUMN_COMPLETADA, completada);
+        values.put(AgendaContract.ActividadEntry.COLUMN_NOTIFICACION, notificacion);
+        values.put(AgendaContract.ActividadEntry.COLUMN_CATEGORIA, categoria); // NUEVO
+
+        String selection = AgendaContract.ActividadEntry._ID + " = ?";
+        String[] selectionArgs = { String.valueOf(id) };
+
+        int count = db.update(AgendaContract.ActividadEntry.TABLE_NAME, values, selection, selectionArgs);
+        db.close();
+        return count;
     }
 }

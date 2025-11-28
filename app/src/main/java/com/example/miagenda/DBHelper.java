@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.miagenda.AgendaContract.ContactoEntry;
 import com.example.miagenda.AgendaContract.NotaEntry;
 import com.example.miagenda.AgendaContract.ActividadEntry;
+;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -18,7 +19,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     ContactoEntry.COLUMN_NAME + " TEXT NOT NULL," +
                     ContactoEntry.COLUMN_NUMERO + " TEXT UNIQUE," +
                     ContactoEntry.COLUMN_EMAIL + " TEXT UNIQUE," +
-                    ContactoEntry.COLUMN_NOTAS + " TEXT)";
+                    ContactoEntry.COLUMN_NOTAS + " TEXT"+
+                    ContactoEntry.COLUMN_FOTO  + "BLOB);";
 
     private static final String SQL_CREATE_NOTAS =
             "CREATE TABLE " + NotaEntry.TABLE_NAME + " (" +
@@ -30,7 +32,11 @@ public class DBHelper extends SQLiteOpenHelper {
                     ActividadEntry.COLUMN_ID + " INTEGER PRIMARY KEY," +
                     ActividadEntry.COLUMN_TITULO + " TEXT NOT NULL," +
                     ActividadEntry.COLUMN_DESCRIPCION + " TEXT," +
-                    ActividadEntry.COLUMN_FECHA + " TEXT NOT NULL)";
+                    ActividadEntry.COLUMN_FECHA + " TEXT NOT NULL,"+
+                    ActividadEntry.COLUMN_HORA + " TEXT," +
+                    ActividadEntry.COLUMN_COMPLETADA + " INTEGER DEFAULT 0," +
+                    ActividadEntry.COLUMN_NOTIFICACION + " INTEGER DEFAULT 1"+
+                    ActividadEntry.COLUMN_CATEGORIA + " TEXT DEFAULT 'General');";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

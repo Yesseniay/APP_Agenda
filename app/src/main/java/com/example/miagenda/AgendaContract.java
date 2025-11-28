@@ -13,6 +13,7 @@ public final class AgendaContract {
         public static final String COLUMN_NUMERO = "numero";
         public static final String COLUMN_EMAIL = "email";
         public static final String COLUMN_NOTAS = "notas";
+        public static final String COLUMN_FOTO = "foto";
     }
 
     // TABLA DE NOTAS
@@ -30,6 +31,10 @@ public final class AgendaContract {
         public static final String COLUMN_TITULO = "titulo";
         public static final String COLUMN_DESCRIPCION = "descripcion";
         public static final String COLUMN_FECHA = "fecha"; // Formato YYYY-MM-DD
+        public static final String COLUMN_HORA = "hora";
+        public static final String COLUMN_COMPLETADA = "completada";
+        public static final String COLUMN_NOTIFICACION = "notificacion";
+        public static final  String COLUMN_CATEGORIA = "categoria";
     }
 
 

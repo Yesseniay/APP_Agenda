@@ -59,5 +59,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="GUARDAR ACTIVIDAD"/>
+    <!-- Agrega este Switch en tu layout -->
+    <Switch
+        android:id="@+id/switchNotificacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Activar notificación"
+        android:checked="true"
+        android:layout_margin="8dp" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Categoría">
+
+        <AutoCompleteTextView
+            android:id="@+id/actividad_categoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:completionHint="Selecciona una categoría"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>

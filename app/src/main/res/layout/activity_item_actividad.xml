@@ -51,5 +51,12 @@
             android:text="Eliminar"
             android:layout_marginStart="8dp"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+        <!-- Indicador de color de categoría - NUEVO -->
+        <View
+            android:id="@+id/color_indicator"
+            android:layout_width="4dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="12dp"
+            android:background="#868E96" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -10,14 +10,34 @@
     android:paddingBottom="10dp"
     android:background="?android:attr/selectableItemBackground">
 
-    <TextView
-        android:id="@+id/tv_nombre_contacto"
+    <!-- Fila superior: Nombre y Favorito -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="#3F51B5"
-        android:text="[Nombre Apellido]"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_nombre_contacto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#3F51B5"
+            android:text="[Nombre Apellido]"/>
+
+        <!-- Botón Favorito -->
+        <ImageButton
+            android:id="@+id/btn_favorito"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_favorito_outline"
+            android:contentDescription="Marcar como favorito"
+            android:padding="8dp"/>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_detalle_contacto"
@@ -40,6 +60,17 @@
         android:orientation="horizontal"
         android:gravity="end"
         android:layout_marginTop="8dp">
+
+        <!-- Botón Llamar -->
+        <ImageButton
+            android:id="@+id/btn_llamar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_llamar"
+            android:contentDescription="Llamar"
+            android:padding="8dp"
+            android:layout_marginEnd="8dp"/>
 
         <Button
             android:id="@+id/btn_editar"
