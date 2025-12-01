@@ -31,12 +31,9 @@ public class ItemContactoActivity extends AppCompatActivity {
 
         manager = new AgendaManager(this);
 
-        // --- CORRECCIÓN DEL BUCLE INFINITO ---
-        // He BORRADO las líneas que creaban el Intent aquí.
-        // Solo recogemos el ID que nos mandaron desde fuera.
+
         contactoId = getIntent().getLongExtra("CONTACTO_ID", -1);
 
-        // --- VINCULACIÓN DE VISTAS (IDs EXACTOS DE TU XML) ---
 
         // Campos de texto
         etNombre = findViewById(R.id.et_nombre);
@@ -48,7 +45,7 @@ public class ItemContactoActivity extends AppCompatActivity {
         btnFavorito = findViewById(R.id.btn_favorito);
         btnLlamar = findViewById(R.id.btn_llamar);
 
-        // Botones de texto (Aquí estaba el error de casteo)
+        // Botones de texto
         btnEditar = findViewById(R.id.btn_editar);
         btnEliminar = findViewById(R.id.btn_eliminar);
         btnGuardar = findViewById(R.id.btn_guardar);
@@ -57,8 +54,6 @@ public class ItemContactoActivity extends AppCompatActivity {
         if (contactoId != -1) {
             cargarDatosContacto(contactoId);
 
-            // Como estamos viendo un contacto, tal vez quieras que los campos
-            // no se puedan editar hasta que le den al botón "Editar".
             deshabilitarEdicion();
         } else {
             Toast.makeText(this, "Error: No se recibió ID de contacto.", Toast.LENGTH_SHORT).show();
@@ -66,16 +61,16 @@ public class ItemContactoActivity extends AppCompatActivity {
             return;
         }
 
-        // --- LISTENERS ---
+        //  accion de llamar
         btnFavorito.setOnClickListener(v -> toggleFavorito());
         btnLlamar.setOnClickListener(v -> realizarLlamada());
 
-        // El botón editar ahora podría habilitar los campos o abrir otra pantalla
+        // El botón editar
         btnEditar.setOnClickListener(v -> abrirEdicion());
 
         btnEliminar.setOnClickListener(v -> mostrarDialogoEliminar());
 
-        // Botón guardar (si implementas la edición en esta misma pantalla)
+        // Botón guardar
         btnGuardar.setOnClickListener(v -> guardarCambios());
     }
 
@@ -134,7 +129,7 @@ public class ItemContactoActivity extends AppCompatActivity {
     }
 
     private void realizarLlamada() {
-        String numero = etNumero.getText().toString(); // Obtenemos del EditText
+        String numero = etNumero.getText().toString();
         if (!numero.trim().isEmpty()) {
             try {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -149,20 +144,14 @@ public class ItemContactoActivity extends AppCompatActivity {
     }
 
     private void abrirEdicion() {
-        // Opción A: Abrir la pantalla de AgregarContactoActivity en modo edición
+
         Intent intent = new Intent(this, AgregarContactoActivity.class);
         intent.putExtra("MODO_EDICION", true);
         intent.putExtra("CONTACTO_ID", contactoId);
         startActivity(intent);
         finish(); // Cerramos esta para que al volver se recarguen los datos
 
-        // Opción B (Alternativa): Habilitar los EditText de esta pantalla
-        /*
-        etNombre.setEnabled(true);
-        etNumero.setEnabled(true);
-        // ... etc
-        btnGuardar.setVisibility(View.VISIBLE);
-        */
+       
     }
 
     private void guardarCambios() {
