@@ -27,26 +27,33 @@ public class AgendaManager {
         return getWritableDB();
     }
 
-    // CRUD CONTACTOS
+    // --- CRUD CONTACTOS ---
 
-    // Metodo para agregar contactos
-    public long agregarContacto(Integer ID, String nombre, String numero, String email, String notas, int favorito, byte[ ]foto) {
-        SQLiteDatabase db = getWritableDB();
+    // MÉTODO CORREGIDO: Ya no pide ID, y recibe la foto correctamente.
+    // (Ahora tiene 6 argumentos, que es lo que envía tu Activity)
+    public long agregarContacto(String nombre, String numero, String email,
+                                String notas, int favorito, byte[] foto) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(ContactoEntry.COLUMN_ID,ID);
-        values.put(ContactoEntry.COLUMN_NAME, nombre);
-        values.put(ContactoEntry.COLUMN_NUMERO, numero);
-        values.put(ContactoEntry.COLUMN_EMAIL, email);
-        values.put(ContactoEntry.COLUMN_NOTAS, notas);
-        values.put(ContactoEntry.COLUMN_FOTO,foto);
-        values.put(ContactoEntry.COLUMN_FAVORITO,favorito);
 
-        long resultado = db.insert("contactos", null, values);
+        values.put(COLUMN_NOMBRE, nombre);
+        values.put(COLUMN_NUMERO, numero);
+        values.put(COLUMN_EMAIL, email != null ? email : "");
+        values.put(COLUMN_NOTAS, notas != null ? notas : "");
+        values.put(COLUMN_FAVORITO, favorito);
+
+        if (foto != null) {
+            values.put(COLUMN_FOTO, foto);
+        } else {
+            values.putNull(COLUMN_FOTO);
+        }
+
+        long id = db.insert(TABLE_CONTACTOS, null, values);
         db.close();
-        return resultado;
+        return id;
     }
 
-    //Metodo para buscar contactos
+    // Método para buscar contactos
     public Cursor buscarContactos(String query) {
         SQLiteDatabase db = getReadableDB();
         String selection = null;
@@ -63,7 +70,20 @@ public class AgendaManager {
         return db.query(ContactoEntry.TABLE_NAME, null, selection, selectionArgs, null, null, sortOrder);
     }
 
-    //Metodo para actualizar los contactos
+    // Método para obtener TODOS los contactos (Necesario para refrescar la lista)
+    public Cursor obtenerContactos() {
+        SQLiteDatabase db = getReadableDB();
+        String sortOrder = ContactoEntry.COLUMN_NAME + " ASC";
+        return db.query(ContactoEntry.TABLE_NAME, null, null, null, null, null, sortOrder);
+    }
+
+    // Método para obtener un contacto por ID
+    public Cursor obtenerContactoPorId(long id) {
+        SQLiteDatabase db = getWritableDB();
+        return db.query(ContactoEntry.TABLE_NAME, null, ContactoEntry.COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
+    }
+
+    // Método para actualizar los contactos
     public int actualizarContacto(long id, String nombre, String numero, String email, String notas) {
         SQLiteDatabase db = getWritableDB();
         ContentValues values = new ContentValues();
@@ -80,7 +100,18 @@ public class AgendaManager {
         return count;
     }
 
-    //Metodo para eliminar los contactos
+    // Método para actualizar favorito (Corazón)
+    public boolean actualizarFavorito(long id, int favorito) {
+        SQLiteDatabase db = getWritableDB();
+        ContentValues values = new ContentValues();
+        values.put(ContactoEntry.COLUMN_FAVORITO, favorito);
+
+        int rowsAffected = db.update(ContactoEntry.TABLE_NAME, values, ContactoEntry.COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+        db.close();
+        return rowsAffected > 0;
+    }
+
+    // Método para eliminar los contactos
     public int eliminarContacto(long id) {
         SQLiteDatabase db = getWritableDB();
         String selection = ContactoEntry.COLUMN_ID + " = ?";
@@ -90,9 +121,9 @@ public class AgendaManager {
         return deletedRows;
     }
 
-    // CRUD NOTAS
 
-    // Metodo de Agregar Nota
+    // --- CRUD NOTAS ---
+
     public long agregarNota(String titulo, String contenido) {
         SQLiteDatabase db = getWritableDB();
         ContentValues values = new ContentValues();
@@ -103,7 +134,6 @@ public class AgendaManager {
         return newRowId;
     }
 
-    // Metodo para buscar
     public Cursor buscarNotas(String query) {
         SQLiteDatabase db = getReadableDB();
         String selection = null;
@@ -114,21 +144,11 @@ public class AgendaManager {
                     NotaEntry.COLUMN_CONTENIDO + " LIKE ?";
             selectionArgs = new String[]{likeQuery, likeQuery};
         }
-        // Se ordena por ID de manera descendente"
         String sortOrder = NotaEntry.COLUMN_ID + " DESC";
 
-        return db.query(
-                NotaEntry.TABLE_NAME,
-                null,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                sortOrder
-        );
+        return db.query(NotaEntry.TABLE_NAME, null, selection, selectionArgs, null, null, sortOrder);
     }
 
-    // Metodo para actualizar la Nota
     public int actualizarNota(long id, String titulo, String contenido) {
         SQLiteDatabase db = getWritableDB();
         ContentValues values = new ContentValues();
@@ -143,7 +163,6 @@ public class AgendaManager {
         return count;
     }
 
-    // Metodo para eliminar una Nota
     public int eliminarNota(long id) {
         SQLiteDatabase db = getWritableDB();
         String selection = NotaEntry.COLUMN_ID + " = ?";
@@ -153,9 +172,9 @@ public class AgendaManager {
         return deletedRows;
     }
 
-    //CRUD actividades
 
-    //Metodo para egreagr actividades
+    // --- CRUD ACTIVIDADES ---
+
     public long agregarActividad(String titulo, String descripcion, String fecha) {
         SQLiteDatabase db = getWritableDB();
         ContentValues values = new ContentValues();
@@ -167,7 +186,6 @@ public class AgendaManager {
         return newRowId;
     }
 
-    // Metodo para buscar actividades por fecha
     public Cursor buscarActividadesPorFecha(String fecha) {
         SQLiteDatabase db = getReadableDB();
         String selection = AgendaContract.ActividadEntry.COLUMN_FECHA + " = ?";
@@ -177,7 +195,6 @@ public class AgendaManager {
         return db.query(AgendaContract.ActividadEntry.TABLE_NAME, null, selection, selectionArgs, null, null, sortOrder);
     }
 
-    //Metodo para obtener una actividad por ID
     public Cursor getActividadPorId(long id) {
         SQLiteDatabase db = getReadableDB();
         String selection = AgendaContract.ActividadEntry.COLUMN_ID + " = ?";
@@ -186,7 +203,6 @@ public class AgendaManager {
         return db.query(AgendaContract.ActividadEntry.TABLE_NAME, null, selection, selectionArgs, null, null, null);
     }
 
-    //Metodo para actualizar actividades
     public int actualizarActividad(long id, String titulo, String descripcion, String fecha) {
         SQLiteDatabase db = getWritableDB();
         ContentValues values = new ContentValues();
@@ -202,7 +218,6 @@ public class AgendaManager {
         return count;
     }
 
-    //Metodo para eliminar una actividad
     public int eliminarActividad(long id) {
         SQLiteDatabase db = getWritableDB();
         String selection = AgendaContract.ActividadEntry.COLUMN_ID + " = ?";
@@ -212,7 +227,8 @@ public class AgendaManager {
         return deletedRows;
     }
 
-    // MÉTODOS NUEVOS PARA NOTIFICACIONES
+    // --- MÉTODOS PARA NOTIFICACIONES ---
+
     public Cursor getActividadesPendientesHoy() {
         SQLiteDatabase db = getReadableDB();
         String today = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
@@ -241,7 +257,7 @@ public class AgendaManager {
         return db.rawQuery(query, new String[]{today});
     }
 
-    // Método para agregar actividad
+    // Método para agregar actividad completa (Sobrecarga 1)
     public long agregarActividadCompleta(String titulo, String descripcion, String fecha, String hora,
                                          int completada, int notificacion) {
         SQLiteDatabase db = getWritableDB();
@@ -258,7 +274,25 @@ public class AgendaManager {
         return newRowId;
     }
 
-    // Método para actualizar
+    // Método para agregar actividad completa CON CATEGORÍA (Sobrecarga 2)
+    public long agregarActividadCompleta(String titulo, String descripcion, String fecha, String hora,
+                                         int completada, int notificacion, String categoria) {
+        SQLiteDatabase db = getWritableDB();
+        ContentValues values = new ContentValues();
+        values.put(AgendaContract.ActividadEntry.COLUMN_TITULO, titulo);
+        values.put(AgendaContract.ActividadEntry.COLUMN_DESCRIPCION, descripcion);
+        values.put(AgendaContract.ActividadEntry.COLUMN_FECHA, fecha);
+        values.put(AgendaContract.ActividadEntry.COLUMN_HORA, hora);
+        values.put(AgendaContract.ActividadEntry.COLUMN_COMPLETADA, completada);
+        values.put(AgendaContract.ActividadEntry.COLUMN_NOTIFICACION, notificacion);
+        values.put(AgendaContract.ActividadEntry.COLUMN_CATEGORIA, categoria);
+
+        long newRowId = db.insert(AgendaContract.ActividadEntry.TABLE_NAME, null, values);
+        db.close();
+        return newRowId;
+    }
+
+    // Método para actualizar actividad completa (Sobrecarga 1)
     public int actualizarActividadCompleta(long id, String titulo, String descripcion, String fecha,
                                            String hora, int completada, int notificacion) {
         SQLiteDatabase db = getWritableDB();
@@ -277,25 +311,8 @@ public class AgendaManager {
         db.close();
         return count;
     }
-    // Método para agregar actividad completa CON CATEGORÍA
-    public long agregarActividadCompleta(String titulo, String descripcion, String fecha, String hora,
-                                         int completada, int notificacion, String categoria) {
-        SQLiteDatabase db = getWritableDB();
-        ContentValues values = new ContentValues();
-        values.put(AgendaContract.ActividadEntry.COLUMN_TITULO, titulo);
-        values.put(AgendaContract.ActividadEntry.COLUMN_DESCRIPCION, descripcion);
-        values.put(AgendaContract.ActividadEntry.COLUMN_FECHA, fecha);
-        values.put(AgendaContract.ActividadEntry.COLUMN_HORA, hora);
-        values.put(AgendaContract.ActividadEntry.COLUMN_COMPLETADA, completada);
-        values.put(AgendaContract.ActividadEntry.COLUMN_NOTIFICACION, notificacion);
-        values.put(AgendaContract.ActividadEntry.COLUMN_CATEGORIA, categoria); // NUEVO
 
-        long newRowId = db.insert(AgendaContract.ActividadEntry.TABLE_NAME, null, values);
-        db.close();
-        return newRowId;
-    }
-
-    // Método para actualizar actividad completa CON CATEGORÍA
+    // Método para actualizar actividad completa CON CATEGORÍA (Sobrecarga 2)
     public int actualizarActividadCompleta(long id, String titulo, String descripcion, String fecha,
                                            String hora, int completada, int notificacion, String categoria) {
         SQLiteDatabase db = getWritableDB();
@@ -306,7 +323,7 @@ public class AgendaManager {
         values.put(AgendaContract.ActividadEntry.COLUMN_HORA, hora);
         values.put(AgendaContract.ActividadEntry.COLUMN_COMPLETADA, completada);
         values.put(AgendaContract.ActividadEntry.COLUMN_NOTIFICACION, notificacion);
-        values.put(AgendaContract.ActividadEntry.COLUMN_CATEGORIA, categoria); // NUEVO
+        values.put(AgendaContract.ActividadEntry.COLUMN_CATEGORIA, categoria);
 
         String selection = AgendaContract.ActividadEntry._ID + " = ?";
         String[] selectionArgs = { String.valueOf(id) };
@@ -315,38 +332,4 @@ public class AgendaManager {
         db.close();
         return count;
     }
-
-    public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE contactos (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "nombre TEXT NOT NULL, " +
-                "numero TEXT, " +
-                "email TEXT, " +
-                "notas TEXT, " +
-                "favorito INTEGER DEFAULT 0, " +
-                "foto BLOB)";
-        db.execSQL(createTable);
-    }
-    // En AgendaManager.java
-    public Cursor obtenerContactoPorId(long id) {
-        SQLiteDatabase db = getWritableDB();
-        return db.query("contactos", null, "id = ?", new String[]{String.valueOf(id)}, null, null, null);
-    }
-
-    public boolean actualizarFavorito(long id, int favorito) {
-        SQLiteDatabase db = getWritableDB();
-        ContentValues values = new ContentValues();
-        values.put("favorito", favorito);
-
-        int rowsAffected = db.update("contactos", values, "id = ?", new String[]{String.valueOf(id)});
-        db.close();
-        return rowsAffected > 0;
-    }
-    public Cursor obtenerContactos() {
-        SQLiteDatabase db = getReadableDB();
-        // Ordenamos por nombre alfabéticamente
-        String sortOrder = ContactoEntry.COLUMN_NAME + " ASC";
-        return db.query(ContactoEntry.TABLE_NAME, null, null, null, null, null, sortOrder);
-    }
-
 }
