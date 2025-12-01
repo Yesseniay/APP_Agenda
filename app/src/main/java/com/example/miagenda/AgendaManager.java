@@ -4,8 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.example.miagenda.AgendaContract.ContactoEntry;
-import com.example.miagenda.AgendaContract.NotaEntry;
 
 public class AgendaManager {
 
@@ -29,26 +27,26 @@ public class AgendaManager {
 
     // --- CRUD CONTACTOS ---
 
-    // MÉTODO CORREGIDO: Ya no pide ID, y recibe la foto correctamente.
-    // (Ahora tiene 6 argumentos, que es lo que envía tu Activity)
+    // MÉTODO CORREGIDO: Usando las constantes correctas
     public long agregarContacto(String nombre, String numero, String email,
                                 String notas, int favorito, byte[] foto) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDB();  // CORREGIDO: getWritableDB() no getWritableDatabase()
         ContentValues values = new ContentValues();
 
-        values.put(COLUMN_NOMBRE, nombre);
-        values.put(COLUMN_NUMERO, numero);
-        values.put(COLUMN_EMAIL, email != null ? email : "");
-        values.put(COLUMN_NOTAS, notas != null ? notas : "");
-        values.put(COLUMN_FAVORITO, favorito);
+        // CORREGIDO: Usando las constantes de AgendaContract
+        values.put(AgendaContract.ContactoEntry.COLUMN_NAME, nombre);
+        values.put(AgendaContract.ContactoEntry.COLUMN_NUMERO, numero);
+        values.put(AgendaContract.ContactoEntry.COLUMN_EMAIL, email != null ? email : "");
+        values.put(AgendaContract.ContactoEntry.COLUMN_NOTAS, notas != null ? notas : "");
+        values.put(AgendaContract.ContactoEntry.COLUMN_FAVORITO, favorito);  // CORREGIDO: favorito no favorite
 
-        if (foto != null) {
-            values.put(COLUMN_FOTO, foto);
+        if (foto != null && foto.length > 0) {
+            values.put(AgendaContract.ContactoEntry.COLUMN_FOTO, foto);
         } else {
-            values.putNull(COLUMN_FOTO);
+            values.putNull(AgendaContract.ContactoEntry.COLUMN_FOTO);
         }
 
-        long id = db.insert(TABLE_CONTACTOS, null, values);
+        long id = db.insert(AgendaContract.ContactoEntry.TABLE_NAME, null, values);
         db.close();
         return id;
     }
@@ -58,44 +56,55 @@ public class AgendaManager {
         SQLiteDatabase db = getReadableDB();
         String selection = null;
         String[] selectionArgs = null;
+
         if (query != null && !query.isEmpty()) {
             String likeQuery = "%" + query + "%";
-            selection = ContactoEntry.COLUMN_NAME + " LIKE ? OR " +
-                    ContactoEntry.COLUMN_NUMERO + " LIKE ? OR " +
-                    ContactoEntry.COLUMN_EMAIL + " LIKE ?";
+            selection = AgendaContract.ContactoEntry.COLUMN_NAME + " LIKE ? OR " +
+                    AgendaContract.ContactoEntry.COLUMN_NUMERO + " LIKE ? OR " +
+                    AgendaContract.ContactoEntry.COLUMN_EMAIL + " LIKE ?";
             selectionArgs = new String[]{likeQuery, likeQuery, likeQuery};
         }
-        String sortOrder = ContactoEntry.COLUMN_NAME + " ASC";
 
-        return db.query(ContactoEntry.TABLE_NAME, null, selection, selectionArgs, null, null, sortOrder);
+        String sortOrder = AgendaContract.ContactoEntry.COLUMN_NAME + " ASC";
+
+        return db.query(AgendaContract.ContactoEntry.TABLE_NAME,
+                null, selection, selectionArgs, null, null, sortOrder);
     }
 
-    // Método para obtener TODOS los contactos (Necesario para refrescar la lista)
+    // Método para obtener TODOS los contactos
     public Cursor obtenerContactos() {
         SQLiteDatabase db = getReadableDB();
-        String sortOrder = ContactoEntry.COLUMN_NAME + " ASC";
-        return db.query(ContactoEntry.TABLE_NAME, null, null, null, null, null, sortOrder);
+        String sortOrder = AgendaContract.ContactoEntry.COLUMN_NAME + " ASC";
+        return db.query(AgendaContract.ContactoEntry.TABLE_NAME,
+                null, null, null, null, null, sortOrder);
     }
 
     // Método para obtener un contacto por ID
     public Cursor obtenerContactoPorId(long id) {
         SQLiteDatabase db = getWritableDB();
-        return db.query(ContactoEntry.TABLE_NAME, null, ContactoEntry.COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
+        return db.query(AgendaContract.ContactoEntry.TABLE_NAME,
+                null,
+                AgendaContract.ContactoEntry.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(id)},
+                null, null, null);
     }
 
     // Método para actualizar los contactos
-    public int actualizarContacto(long id, String nombre, String numero, String email, String notas) {
+    public int actualizarContacto(long id, String nombre, String numero,
+                                  String email, String notas) {
         SQLiteDatabase db = getWritableDB();
         ContentValues values = new ContentValues();
-        values.put(ContactoEntry.COLUMN_NAME, nombre);
-        values.put(ContactoEntry.COLUMN_NUMERO, numero);
-        values.put(ContactoEntry.COLUMN_EMAIL, email);
-        values.put(ContactoEntry.COLUMN_NOTAS, notas);
 
-        String selection = ContactoEntry.COLUMN_ID + " = ?";
+        values.put(AgendaContract.ContactoEntry.COLUMN_NAME, nombre);
+        values.put(AgendaContract.ContactoEntry.COLUMN_NUMERO, numero);
+        values.put(AgendaContract.ContactoEntry.COLUMN_EMAIL, email);
+        values.put(AgendaContract.ContactoEntry.COLUMN_NOTAS, notas);
+
+        String selection = AgendaContract.ContactoEntry.COLUMN_ID + " = ?";
         String[] selectionArgs = { String.valueOf(id) };
 
-        int count = db.update(ContactoEntry.TABLE_NAME, values, selection, selectionArgs);
+        int count = db.update(AgendaContract.ContactoEntry.TABLE_NAME,
+                values, selection, selectionArgs);
         db.close();
         return count;
     }
@@ -104,9 +113,12 @@ public class AgendaManager {
     public boolean actualizarFavorito(long id, int favorito) {
         SQLiteDatabase db = getWritableDB();
         ContentValues values = new ContentValues();
-        values.put(ContactoEntry.COLUMN_FAVORITO, favorito);
+        values.put(AgendaContract.ContactoEntry.COLUMN_FAVORITO, favorito);
 
-        int rowsAffected = db.update(ContactoEntry.TABLE_NAME, values, ContactoEntry.COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+        int rowsAffected = db.update(AgendaContract.ContactoEntry.TABLE_NAME,
+                values,
+                AgendaContract.ContactoEntry.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(id)});
         db.close();
         return rowsAffected > 0;
     }
@@ -114,22 +126,22 @@ public class AgendaManager {
     // Método para eliminar los contactos
     public int eliminarContacto(long id) {
         SQLiteDatabase db = getWritableDB();
-        String selection = ContactoEntry.COLUMN_ID + " = ?";
+        String selection = AgendaContract.ContactoEntry.COLUMN_ID + " = ?";
         String[] selectionArgs = { String.valueOf(id) };
-        int deletedRows = db.delete(ContactoEntry.TABLE_NAME, selection, selectionArgs);
+        int deletedRows = db.delete(AgendaContract.ContactoEntry.TABLE_NAME,
+                selection, selectionArgs);
         db.close();
         return deletedRows;
     }
-
 
     // --- CRUD NOTAS ---
 
     public long agregarNota(String titulo, String contenido) {
         SQLiteDatabase db = getWritableDB();
         ContentValues values = new ContentValues();
-        values.put(NotaEntry.COLUMN_TITULO, titulo);
-        values.put(NotaEntry.COLUMN_CONTENIDO, contenido);
-        long newRowId = db.insert(NotaEntry.TABLE_NAME, null, values);
+        values.put(AgendaContract.NotaEntry.COLUMN_TITULO, titulo);
+        values.put(AgendaContract.NotaEntry.COLUMN_CONTENIDO, contenido);
+        long newRowId = db.insert(AgendaContract.NotaEntry.TABLE_NAME, null, values);
         db.close();
         return newRowId;
     }
@@ -138,40 +150,44 @@ public class AgendaManager {
         SQLiteDatabase db = getReadableDB();
         String selection = null;
         String[] selectionArgs = null;
+
         if (query != null && !query.isEmpty()) {
             String likeQuery = "%" + query + "%";
-            selection = NotaEntry.COLUMN_TITULO + " LIKE ? OR " +
-                    NotaEntry.COLUMN_CONTENIDO + " LIKE ?";
+            selection = AgendaContract.NotaEntry.COLUMN_TITULO + " LIKE ? OR " +
+                    AgendaContract.NotaEntry.COLUMN_CONTENIDO + " LIKE ?";
             selectionArgs = new String[]{likeQuery, likeQuery};
         }
-        String sortOrder = NotaEntry.COLUMN_ID + " DESC";
 
-        return db.query(NotaEntry.TABLE_NAME, null, selection, selectionArgs, null, null, sortOrder);
+        String sortOrder = AgendaContract.NotaEntry.COLUMN_ID + " DESC";
+
+        return db.query(AgendaContract.NotaEntry.TABLE_NAME,
+                null, selection, selectionArgs, null, null, sortOrder);
     }
 
     public int actualizarNota(long id, String titulo, String contenido) {
         SQLiteDatabase db = getWritableDB();
         ContentValues values = new ContentValues();
-        values.put(NotaEntry.COLUMN_TITULO, titulo);
-        values.put(NotaEntry.COLUMN_CONTENIDO, contenido);
+        values.put(AgendaContract.NotaEntry.COLUMN_TITULO, titulo);
+        values.put(AgendaContract.NotaEntry.COLUMN_CONTENIDO, contenido);
 
-        String selection = NotaEntry.COLUMN_ID + " = ?";
+        String selection = AgendaContract.NotaEntry.COLUMN_ID + " = ?";
         String[] selectionArgs = { String.valueOf(id) };
 
-        int count = db.update(NotaEntry.TABLE_NAME, values, selection, selectionArgs);
+        int count = db.update(AgendaContract.NotaEntry.TABLE_NAME,
+                values, selection, selectionArgs);
         db.close();
         return count;
     }
 
     public int eliminarNota(long id) {
         SQLiteDatabase db = getWritableDB();
-        String selection = NotaEntry.COLUMN_ID + " = ?";
+        String selection = AgendaContract.NotaEntry.COLUMN_ID + " = ?";
         String[] selectionArgs = { String.valueOf(id) };
-        int deletedRows = db.delete(NotaEntry.TABLE_NAME, selection, selectionArgs);
+        int deletedRows = db.delete(AgendaContract.NotaEntry.TABLE_NAME,
+                selection, selectionArgs);
         db.close();
         return deletedRows;
     }
-
 
     // --- CRUD ACTIVIDADES ---
 
@@ -192,7 +208,8 @@ public class AgendaManager {
         String[] selectionArgs = { fecha };
         String sortOrder = AgendaContract.ActividadEntry.COLUMN_TITULO + " ASC";
 
-        return db.query(AgendaContract.ActividadEntry.TABLE_NAME, null, selection, selectionArgs, null, null, sortOrder);
+        return db.query(AgendaContract.ActividadEntry.TABLE_NAME,
+                null, selection, selectionArgs, null, null, sortOrder);
     }
 
     public Cursor getActividadPorId(long id) {
@@ -200,7 +217,8 @@ public class AgendaManager {
         String selection = AgendaContract.ActividadEntry.COLUMN_ID + " = ?";
         String[] selectionArgs = { String.valueOf(id) };
 
-        return db.query(AgendaContract.ActividadEntry.TABLE_NAME, null, selection, selectionArgs, null, null, null);
+        return db.query(AgendaContract.ActividadEntry.TABLE_NAME,
+                null, selection, selectionArgs, null, null, null);
     }
 
     public int actualizarActividad(long id, String titulo, String descripcion, String fecha) {
@@ -213,7 +231,8 @@ public class AgendaManager {
         String selection = AgendaContract.ActividadEntry.COLUMN_ID + " = ?";
         String[] selectionArgs = { String.valueOf(id) };
 
-        int count = db.update(AgendaContract.ActividadEntry.TABLE_NAME, values, selection, selectionArgs);
+        int count = db.update(AgendaContract.ActividadEntry.TABLE_NAME,
+                values, selection, selectionArgs);
         db.close();
         return count;
     }
@@ -222,7 +241,8 @@ public class AgendaManager {
         SQLiteDatabase db = getWritableDB();
         String selection = AgendaContract.ActividadEntry.COLUMN_ID + " = ?";
         String[] selectionArgs = { String.valueOf(id) };
-        int deletedRows = db.delete(AgendaContract.ActividadEntry.TABLE_NAME, selection, selectionArgs);
+        int deletedRows = db.delete(AgendaContract.ActividadEntry.TABLE_NAME,
+                selection, selectionArgs);
         db.close();
         return deletedRows;
     }
@@ -292,7 +312,7 @@ public class AgendaManager {
         return newRowId;
     }
 
-    // Método para actualizar actividad completa (Sobrecarga 1)
+    // Método para actualizar actividad completa
     public int actualizarActividadCompleta(long id, String titulo, String descripcion, String fecha,
                                            String hora, int completada, int notificacion) {
         SQLiteDatabase db = getWritableDB();
@@ -304,10 +324,11 @@ public class AgendaManager {
         values.put(AgendaContract.ActividadEntry.COLUMN_COMPLETADA, completada);
         values.put(AgendaContract.ActividadEntry.COLUMN_NOTIFICACION, notificacion);
 
-        String selection = AgendaContract.ActividadEntry._ID + " = ?";
+        String selection = AgendaContract.ActividadEntry.COLUMN_ID + " = ?";  // CORREGIDO: COLUMN_ID no _ID
         String[] selectionArgs = { String.valueOf(id) };
 
-        int count = db.update(AgendaContract.ActividadEntry.TABLE_NAME, values, selection, selectionArgs);
+        int count = db.update(AgendaContract.ActividadEntry.TABLE_NAME,
+                values, selection, selectionArgs);
         db.close();
         return count;
     }
@@ -325,10 +346,11 @@ public class AgendaManager {
         values.put(AgendaContract.ActividadEntry.COLUMN_NOTIFICACION, notificacion);
         values.put(AgendaContract.ActividadEntry.COLUMN_CATEGORIA, categoria);
 
-        String selection = AgendaContract.ActividadEntry._ID + " = ?";
+        String selection = AgendaContract.ActividadEntry.COLUMN_ID + " = ?";  // CORREGIDO: COLUMN_ID no _ID
         String[] selectionArgs = { String.valueOf(id) };
 
-        int count = db.update(AgendaContract.ActividadEntry.TABLE_NAME, values, selection, selectionArgs);
+        int count = db.update(AgendaContract.ActividadEntry.TABLE_NAME,
+                values, selection, selectionArgs);
         db.close();
         return count;
     }
