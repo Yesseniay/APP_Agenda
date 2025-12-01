@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,10 +26,11 @@ import java.io.InputStream;
 public class AgregarContactoActivity extends AppCompatActivity {
 
     private EditText etNombre, etNumero, etEmail, etNotas;
-    private Switch switchFavorito;
+    private ImageButton btnFavorito, btnLlamar;
+    private ImageView ivFotoContacto;
     private AgendaManager manager;
-    private ImageView ivProfilePicture;
     private Bitmap imagenSeleccionada;
+    private boolean esFavorito = false;
 
     // Códigos de solicitud
     private static final int CODIGO_GALERIA = 1;
@@ -40,47 +41,58 @@ public class AgregarContactoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agregar_contacto);
-
+        setContentView(R.layout.item_contacto);
         manager = new AgendaManager(this);
 
-        // Inicializar Vistas
+        // Inicializar Vistas del item_contacto.xml
         etNombre = findViewById(R.id.et_nombre);
         etNumero = findViewById(R.id.et_numero);
         etEmail = findViewById(R.id.et_email);
         etNotas = findViewById(R.id.et_notas);
-        switchFavorito = findViewById(R.id.switch_favorito);
-        Button btnGuardar = findViewById(R.id.btn_guardar);
-        ImageButton btnLlamar = findViewById(R.id.btn_llamar);
+        btnFavorito = findViewById(R.id.btn_favorito);
+        btnLlamar = findViewById(R.id.btn_llamar);
+        ivFotoContacto = findViewById(R.id.iv_foto_contacto);
 
-        ivProfilePicture = findViewById(R.id.iv_profile_picture);
-        ImageView btnChangePhoto = findViewById(R.id.btn_change_photo);
+        Button btnGuardar = findViewById(R.id.btn_guardar);
+        Button btnEditar = findViewById(R.id.btn_editar);
+        Button btnEliminar = findViewById(R.id.btn_eliminar);
+
+        // Ocultar botones que no necesitamos en agregar contacto
+        btnEditar.setVisibility(android.view.View.GONE);
+        btnEliminar.setVisibility(android.view.View.GONE);
 
         // Configurar Listeners
-        ivProfilePicture.setOnClickListener(v -> mostrarOpcionesFoto());
-        btnChangePhoto.setOnClickListener(v -> mostrarOpcionesFoto());
-
+        ivFotoContacto.setOnClickListener(v -> mostrarOpcionesFoto());
+        btnFavorito.setOnClickListener(v -> toggleFavorito());
+        btnLlamar.setOnClickListener(v -> realizarLlamada());
         btnGuardar.setOnClickListener(v -> guardarContacto());
-
-        // Botón Llamar
-        btnLlamar.setOnClickListener(v -> {
-            String numero = etNumero.getText().toString().trim();
-            if (!numero.isEmpty()) {
-                realizarLlamada(numero);
-            } else {
-                Toast.makeText(this, "Ingresa un número primero", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
-    private void realizarLlamada(String numero) {
-        try {
-            // Usamos ACTION_DIAL para mayor seguridad (no requiere permisos críticos)
-            Intent intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:" + numero));
-            startActivity(intent);
-        } catch (Exception e) {
-            Toast.makeText(this, "No se puede realizar la llamada", Toast.LENGTH_SHORT).show();
+    // Método para alternar el estado de favorito
+    private void toggleFavorito() {
+        esFavorito = !esFavorito;
+
+        if (esFavorito) {
+            btnFavorito.setImageResource(R.drawable.ic_favorito_lleno);
+            Toast.makeText(this, "Contacto marcado como favorito", Toast.LENGTH_SHORT).show();
+        } else {
+            btnFavorito.setImageResource(R.drawable.ic_favorito_outline);
+            Toast.makeText(this, "Contacto removido de favoritos", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void realizarLlamada() {
+        String numero = etNumero.getText().toString().trim();
+        if (!numero.isEmpty()) {
+            try {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + numero));
+                startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(this, "No se puede realizar la llamada", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, "Ingresa un número primero", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -107,7 +119,6 @@ public class AgregarContactoActivity extends AppCompatActivity {
     }
 
     private void verificarPermisoGaleria() {
-        // En Android 13+ el permiso es READ_MEDIA_IMAGES, en anteriores es READ_EXTERNAL_STORAGE
         String permiso = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU ?
                 Manifest.permission.READ_MEDIA_IMAGES : Manifest.permission.READ_EXTERNAL_STORAGE;
 
@@ -152,26 +163,22 @@ public class AgregarContactoActivity extends AppCompatActivity {
             if (requestCode == CODIGO_GALERIA) {
                 Uri uriImagen = data.getData();
                 try {
-                    // Usamos stream para cargar imagen de forma más segura
                     InputStream imageStream = getContentResolver().openInputStream(uriImagen);
                     imagenSeleccionada = BitmapFactory.decodeStream(imageStream);
-                    ivProfilePicture.setImageBitmap(imagenSeleccionada);
-                    // Cambiamos el padding para que la foto se vea completa
-                    ivProfilePicture.setPadding(0,0,0,0);
+                    ivFotoContacto.setImageBitmap(imagenSeleccionada);
                 } catch (Exception e) {
                     Toast.makeText(this, "Error al cargar imagen", Toast.LENGTH_SHORT).show();
                 }
             } else if (requestCode == CODIGO_CAMARA) {
                 imagenSeleccionada = (Bitmap) data.getExtras().get("data");
-                ivProfilePicture.setImageBitmap(imagenSeleccionada);
-                ivProfilePicture.setPadding(0,0,0,0);
+                ivFotoContacto.setImageBitmap(imagenSeleccionada);
             }
         }
     }
 
     private byte[] convertirImagenABytes(Bitmap bitmap) {
+        if (bitmap == null) return null;
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        // Comprimir a PNG con calidad 100
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         return stream.toByteArray();
     }
@@ -181,31 +188,30 @@ public class AgregarContactoActivity extends AppCompatActivity {
         String numero = etNumero.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String notas = etNotas.getText().toString().trim();
-
-        //1 si es favorito, 0 si no)
-        int favorito = switchFavorito.isChecked() ? 1 : 0;
+        int favorito = esFavorito ? 1 : 0;
+        byte fotoByte = 0;
 
         if (nombre.isEmpty()) {
-            Toast.makeText(this, "El nombre es obligatorio.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "El nombre es obligatorio", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        byte[] fotoBytes = null;
+        // Convertir imagen si existe
         if (imagenSeleccionada != null) {
-            fotoBytes = convertirImagenABytes(imagenSeleccionada);
+            byte[] fotoBytes = convertirImagenABytes(imagenSeleccionada);
+            if (fotoBytes != null && fotoBytes.length > 0) {
+                fotoByte = fotoBytes[0];
+            }
         }
 
-        // Llamamos al método corregido en AgendaManager
-        long newRowId = manager.agregarContacto(nombre, numero, email, notas, favorito);
-        // NOTA: Si tu manager ya acepta la foto, usa:
-        // manager.agregarContacto(nombre, numero, email, notas, favorito, fotoBytes);
-        // Si no has actualizado el manager para aceptar bytes, usa la línea de arriba y la foto quedará pendiente.
+        // Llamar al método del manager
+        long id = manager.agregarContacto(nombre, numero, email, notas, fotoByte, favorito);
 
-        if (newRowId != -1) {
-            Toast.makeText(this, "Contacto guardado.", Toast.LENGTH_SHORT).show();
+        if (id != -1) {
+            Toast.makeText(this, "Contacto guardado", Toast.LENGTH_SHORT).show();
             finish();
         } else {
-            Toast.makeText(this, "Error al guardar.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error al guardar", Toast.LENGTH_SHORT).show();
         }
     }
 }

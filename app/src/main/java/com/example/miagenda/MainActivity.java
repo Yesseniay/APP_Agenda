@@ -11,17 +11,19 @@ import com.google.android.material.card.MaterialCardView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MaterialCardView card_contactos, card_agregar, card_notas,card_calendario;
+    private MaterialCardView card_contactos, card_agregar, card_notas, card_calendario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        // Inicializamos las tarjetas
         card_contactos = findViewById(R.id.card_contactos);
         card_agregar = findViewById(R.id.card_agregar);
         card_notas = findViewById(R.id.card_notas);
+        card_calendario = findViewById(R.id.card_calendario);
+
 
         //  Abre el activity contacto
         card_contactos.setOnClickListener(new View.OnClickListener() {
@@ -36,24 +38,25 @@ public class MainActivity extends AppCompatActivity {
         card_agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,AgregarContactoActivity.class);
+                Intent intent = new Intent(MainActivity.this, AgregarContactoActivity.class);
                 startActivity(intent);
             }
         });
+
         //  Abre el activity de notas
         card_notas.setOnClickListener(v -> {
             Toast.makeText(this, "Notas", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(MainActivity.this, NotaActivity.class));
         });
+
+        // Abre el activity de calendario
         card_calendario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
                 Intent intent = new Intent(MainActivity.this, activity_calendario.class);
-
-
                 startActivity(intent);
             }
         });
+
     }
 }

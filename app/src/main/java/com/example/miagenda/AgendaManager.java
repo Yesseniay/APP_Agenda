@@ -30,9 +30,10 @@ public class AgendaManager {
     // CRUD CONTACTOS
 
     // Metodo para agregar contactos
-    public long agregarContacto(String nombre, String numero, String email, String notas,byte foto, int favorito) {
+    public long agregarContacto(Integer ID, String nombre, String numero, String email, String notas, int favorito, byte[ ]foto) {
         SQLiteDatabase db = getWritableDB();
         ContentValues values = new ContentValues();
+        values.put(ContactoEntry.COLUMN_ID,ID);
         values.put(ContactoEntry.COLUMN_NAME, nombre);
         values.put(ContactoEntry.COLUMN_NUMERO, numero);
         values.put(ContactoEntry.COLUMN_EMAIL, email);
@@ -40,9 +41,9 @@ public class AgendaManager {
         values.put(ContactoEntry.COLUMN_FOTO,foto);
         values.put(ContactoEntry.COLUMN_FAVORITO,favorito);
 
-        long newRowId = db.insert(ContactoEntry.TABLE_NAME, null, values);
+        long resultado = db.insert("contactos", null, values);
         db.close();
-        return newRowId;
+        return resultado;
     }
 
     //Metodo para buscar contactos
@@ -314,4 +315,38 @@ public class AgendaManager {
         db.close();
         return count;
     }
+
+    public void onCreate(SQLiteDatabase db) {
+        String createTable = "CREATE TABLE contactos (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "nombre TEXT NOT NULL, " +
+                "numero TEXT, " +
+                "email TEXT, " +
+                "notas TEXT, " +
+                "favorito INTEGER DEFAULT 0, " +
+                "foto BLOB)";
+        db.execSQL(createTable);
+    }
+    // En AgendaManager.java
+    public Cursor obtenerContactoPorId(long id) {
+        SQLiteDatabase db = getWritableDB();
+        return db.query("contactos", null, "id = ?", new String[]{String.valueOf(id)}, null, null, null);
+    }
+
+    public boolean actualizarFavorito(long id, int favorito) {
+        SQLiteDatabase db = getWritableDB();
+        ContentValues values = new ContentValues();
+        values.put("favorito", favorito);
+
+        int rowsAffected = db.update("contactos", values, "id = ?", new String[]{String.valueOf(id)});
+        db.close();
+        return rowsAffected > 0;
+    }
+    public Cursor obtenerContactos() {
+        SQLiteDatabase db = getReadableDB();
+        // Ordenamos por nombre alfabéticamente
+        String sortOrder = ContactoEntry.COLUMN_NAME + " ASC";
+        return db.query(ContactoEntry.TABLE_NAME, null, null, null, null, null, sortOrder);
+    }
+
 }

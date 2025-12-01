@@ -11,6 +11,7 @@ drawable gradient_background
 drawable gt
 drawable ic_calendario
 drawable ic_camera
+drawable ic_default_avatar
 drawable ic_default_profile
 drawable ic_favorito_lleno
 drawable ic_favorito_outline
@@ -58,6 +59,7 @@ id et_numero
 id fab_add_actividad
 id guideline
 id header_bg
+id iv_foto_contacto
 id iv_profile_picture
 id main
 id rv_actividades
@@ -68,9 +70,7 @@ id til_search
 id tv_actividad_fecha
 id tv_actividades_titulo
 id tv_descripcion_actividad
-id tv_detalle_contacto
 id tv_form_actividad_titulo
-id tv_nombre_contacto
 id tv_title
 id tv_title_add_contact
 id tv_titulo_actividad

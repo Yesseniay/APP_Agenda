@@ -3030,6 +3030,7 @@ drawable ic_call_decline_low
 drawable ic_camera
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
+drawable ic_default_avatar
 drawable ic_default_profile
 drawable ic_favorito_lleno
 drawable ic_favorito_outline
@@ -3395,6 +3396,7 @@ id invisible
 id inward
 id italic
 id item_touch_helper_previous_elevation
+id iv_foto_contacto
 id iv_profile_picture
 id jumpToEnd
 id jumpToStart
@@ -3653,9 +3655,7 @@ id triangle
 id tv_actividad_fecha
 id tv_actividades_titulo
 id tv_descripcion_actividad
-id tv_detalle_contacto
 id tv_form_actividad_titulo
-id tv_nombre_contacto
 id tv_title
 id tv_title_add_contact
 id tv_titulo_actividad
