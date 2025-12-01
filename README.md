@@ -11,6 +11,7 @@
     Plataforma: Android Studio
     Base de Datos: SQLite
     Componentes Clave: RecyclerView, CursorAdapter, Activity, CalendarView.
+    api: paleta de color
 
 🚀 Módulos y Funcionalidades
 
