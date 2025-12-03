@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">MiAgenda</string>
+    <style name="Base.Theme.MiAgenda" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.MiAgenda" parent="Base.Theme.MiAgenda"/>
+</resources>

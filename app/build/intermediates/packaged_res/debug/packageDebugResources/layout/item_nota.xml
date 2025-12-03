@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_card_background"
+    android:layout_margin="8dp"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/txtTituloNota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Título de nota"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#222222" />
+
+    <TextView
+        android:id="@+id/txtTextoNota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contenido de la nota..."
+        android:textSize="14sp"
+        android:textColor="#555555"
+        android:layout_marginTop="4dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btn_editar_nota"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="EDITAR"
+            android:textSize="12sp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#FF9800"/>
+
+        <Button
+            android:id="@+id/btn_eliminar_nota"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="ELIMINAR"
+            android:textSize="12sp"
+            android:backgroundTint="#F44336"/>
+    </LinearLayout>
+</LinearLayout>

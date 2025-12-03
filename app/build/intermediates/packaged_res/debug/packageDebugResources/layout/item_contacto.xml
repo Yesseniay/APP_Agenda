@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/iv_foto_item"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@android:drawable/sym_def_app_icon"
+            android:scaleType="centerCrop"
+            android:background="@android:color/darker_gray"
+            android:layout_marginEnd="12dp"
+            android:layout_gravity="center_vertical"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_nombre_item"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nombre"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:singleLine="true" />
+
+                <ImageButton
+                    android:id="@+id/btn_favorito_item"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@android:drawable/star_big_off"
+                    android:background="@android:color/transparent"
+                    app:tint="#FFC107"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_numero_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Número"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:layout_marginTop="2dp"/>
+
+            <TextView
+                android:id="@+id/tv_email_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Correo"
+                android:textSize="13sp"
+                android:textColor="#666666"/>
+
+            <TextView
+                android:id="@+id/tv_nota_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nota"
+                android:textSize="12sp"
+                android:textColor="#888888"
+                android:textStyle="italic"
+                android:maxLines="2"
+                android:ellipsize="end"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_marginTop="8dp">
+
+                <ImageButton
+                    android:id="@+id/btn_llamar_item"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@android:drawable/ic_menu_call"
+                    android:background="@android:color/transparent"
+                    app:tint="#8BC34A"
+                    android:layout_marginEnd="12dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_editar_item"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:background="@android:color/transparent"
+                    app:tint="#64B5F6"
+                    android:layout_marginEnd="12dp"/>
+
+                <ImageButton
+                    android:id="@+id/btn_eliminar_item"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@android:drawable/ic_menu_delete"
+                    android:background="@android:color/transparent"
+                    app:tint="#E57373"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
